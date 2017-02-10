@@ -12,6 +12,15 @@ describe("Guessing Game", function(){
         game.guessNumber();
         expect(game.showPlayerTurn()).toEqual(2);
     });
+    it("will tell that the player's guess was correct", function(){
+        var game = new GuessingGame(50);
+        expect(game.guessNumber()).toBeTruthy();
+    });
+    it("will tell that the player's guess was too low", function(){
+        var game = new GuessingGame(25);
+        expect(game.guessNumber()).toEqual("Wrong! Too low!");
+    });
+
 
 
 });

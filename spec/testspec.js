@@ -20,6 +20,10 @@ describe("Guessing Game", function(){
         var game = new GuessingGame(25);
         expect(game.guessNumber()).toEqual("Wrong! Too low!");
     });
+    it("will tell that the player's guess was too High", function(){
+        var game = new GuessingGame(75);
+        expect(game.guessNumber()).toEqual("Wrong! Too high!");
+    });
 
 
 

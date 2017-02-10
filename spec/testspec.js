@@ -1,0 +1,17 @@
+describe("Guessing Game", function(){
+    it("picks a random number between 1 and 100", function(){
+        var game = new GuessingGame();
+        expect(game.showsIfRandomNumber()).toBeTruthy();
+    });
+    it("will tell what turn the player is on", function(){
+        var game = new GuessingGame();
+        expect(game.showPlayerTurn()).toEqual(1);
+    });
+    it("will tell what turn the player is on after player has had a guess", function(){
+        var game = new GuessingGame();
+        game.guessNumber();
+        expect(game.showPlayerTurn()).toEqual(2);
+    });
+
+
+});

@@ -1,4 +1,4 @@
-function GuessingGame(guess){
+function GuessingGame(){
 
     var guess = guess
     var randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -25,7 +25,8 @@ function GuessingGame(guess){
     this.showPlayerTurn = function showPlayerTurn(){
         return playerTurn
     };
-    this.guessNumber = function(){
+    this.guessNumber = function(input){
+        guess = input
         playerTurn++;
         return this.compareNumbers();
     };

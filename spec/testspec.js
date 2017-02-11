@@ -24,7 +24,18 @@ describe("Guessing Game", function(){
         var game = new GuessingGame();
         expect(game.guessNumber(75)).toEqual("Wrong! Too high!");
     });
+    it("will give the previous guesses", function(){
+        var game = new GuessingGame();
+        game.guessNumber(88)
+        expect(game.showPreviousGuesses()).toEqual([88]);
+    });
 
+    it("will give the previous guesses", function(){
+        var game = new GuessingGame();
+        game.guessNumber(88)
+        game.guessNumber(25)
+        expect(game.showPreviousGuesses()).toEqual([88,25]);
+    });
 
 
 });

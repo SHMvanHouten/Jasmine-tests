@@ -1,22 +1,27 @@
 function GuessingGame(){
 
     var guess = guess
-    var randomNumber = Math.floor(Math.random() * 100) + 1;
+    var numberGenerator = Math.floor(Math.random() * 100) + 1;
+    var randomNumber;
     var playerTurn = 1;
-
+    var previousGuesses = [];
 
     this.compareNumbers = function(){
         if(this.getRandomNumber() == guess){
             return true;
         }
         else if(guess < this.getRandomNumber()){
-            return "Wrong! Too low!"
+            this.addPreviousGuess()
+            return "Wrong! Too low!";
         }
         else if(guess > this.getRandomNumber()){
-            return"Wrong! Too high!"
+            this.addPreviousGuess()
+            return"Wrong! Too high!";
         }
     };
-
+    this.generateNumber = function(){
+        return randomNumber = numberGenerator
+    };
     this.getRandomNumber =  function(){
 //        return randomNumber;
         return 50;
@@ -30,6 +35,13 @@ function GuessingGame(){
         playerTurn++;
         return this.compareNumbers();
     };
+    this.addPreviousGuess = function(){
+        previousGuesses.push(guess);
+    };
+    this.showPreviousGuesses = function(){
+        return previousGuesses
+    }
+
 };
 
 

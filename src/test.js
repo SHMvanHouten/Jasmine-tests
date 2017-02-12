@@ -2,8 +2,9 @@ function DaysTillChristmas(){
 
     this.monthCalculator = function monthCalculator(day, month){
         var day = day;
+        day = 25 - day;
         day += ((-(10-month)) * 30);
-        return "Christmas is 30 days away";
+        return "Christmas is "+ (day) + " days away";
 
 
     };

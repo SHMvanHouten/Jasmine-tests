@@ -1,8 +1,11 @@
 function DaysTillChristmas(){
     this.dayCalculator = function dayCalculator(day, month){
-        if(month == 12){
-            return "Christmas is "+ (25-day)+ " days away"
-        };
+        if(month == 12 && day<25){
+            return "Christmas is "+ (25-day)+ " days away";
+        }
+        else{
+            return "Christmas is "+ (365 -(day-25))+ " days away";
+        }
     };
 
     this.getNumberOfDays = function getNumberOfDays(day, month){

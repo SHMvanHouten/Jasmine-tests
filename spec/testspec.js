@@ -16,6 +16,10 @@ describe("DaysTillChristmas", function(){
         var test = new DaysTillChristmas();
         expect(test.getNumberOfDays(26,12)).toEqual("Christmas is 364 days away")
     });
+    it("should tell you that christmas is 30 days away!", function(){
+        var test = new DaysTillChristmas();
+        expect(test.getNumberOfDays(25,11)).toEqual("Christmas is 30 days away")
+    });
 
 
 });

@@ -9,7 +9,7 @@ function DaysTillChristmas(){
         if (monthsAway == 1){
             return 30 * monthsAway;
         }
-        else if (monthsAway == 2){
+        else if (monthsAway >= 2){
             return (30 * monthsAway) + 1;
         }
 

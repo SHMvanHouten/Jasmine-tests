@@ -2,7 +2,7 @@ function DaysTillChristmas(){
 
     this.getMonthsAway = function getMonthsAway(month){
         var monthsAway = 0;
-            while(month <= 11){
+        while(month <= 11){
             monthsAway++;
             month++;
         };

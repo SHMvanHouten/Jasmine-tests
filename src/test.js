@@ -6,12 +6,9 @@ function DaysTillChristmas(){
             monthsAway++;
             month++;
         };
-        if (monthsAway == 1){
-            return 30 * monthsAway;
-        }
-        else if (monthsAway >= 2){
-            return (30 * monthsAway) + 1;
-        }
+
+            return 30 * monthsAway + Math.floor(monthsAway/2);
+
 
     };
 

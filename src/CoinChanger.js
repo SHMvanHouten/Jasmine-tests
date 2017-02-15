@@ -2,13 +2,13 @@ function CoinChanger(){
 
     var amountOfCoins = [];
 
-    this.showNumberOfCoins = function (amount){
+    this.showNumberOfEachCoin = function (amount){
         for (var i=0;i<this.coins.length;i++){
             amountOfCoins.push(Math.trunc(amount/this.coins[i]));
             amount -= (amountOfCoins[i] * this.coins[i]);
         };
         if(amount!== 0){
-            amountOfCoins[this.coins.length - 1] = Math.round(amount/this.coins[this.coins.length - 1]);
+            amountOfCoins[this.coins.length - 1] += Math.round(amount/this.coins[this.coins.length - 1]);
         }
         return amountOfCoins;
     };
@@ -30,15 +30,18 @@ function CoinChanger(){
         else if(currency === "euro"){
             return this.coins = [200,100,50,20,10,5,2,1]
         }
+        else if(currency === "euroAbove50Cents"){
+            return this.coins = [200,100,50]
+        }
     };
 };
 
 CoinChanger.prototype.showCoins = function (amount){
-    return this.showNumberOfCoins(amount);
+    return this.showNumberOfEachCoin(amount);
 };
 
 CoinChanger.prototype.declareCoins = function (amount){
-    this.showNumberOfCoins(amount);
+    this.showNumberOfEachCoin(amount);
     return this.declareNumberOfCoins();
 };
 

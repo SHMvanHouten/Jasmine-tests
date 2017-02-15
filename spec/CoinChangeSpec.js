@@ -49,5 +49,17 @@ describe ("coin changer", function (){
        changer2.changeCurrency("gulden");
        expect(changer2.declareCoins(88)).toEqual("The coins you require: 1 times 50 cents, 1 times 25 cents, 1 times 10 cents, 1 times 5 cents.")
     });
+    it("should change the coinsystem to 'euroAbove50Cents'", function(){
+        var changer4 = new CoinChanger();
+        changer4.changeCurrency("euroAbove50Cents");
+        expect(changer4.coins).toEqual([200,100,50])
+        expect(changer4.declareCoins(247)).toEqual("The coins you require: 1 times 200 cents, 1 times 50 cents.")
+    });
+    it("should tell: The coins you require: 1 times 200 cents, 1 times 50 cents. ", function(){
+        var changer4 = new CoinChanger();
+        changer4.changeCurrency("euroAbove50Cents");
+        expect(changer4.coins).toEqual([200,100,50])
+        expect(changer4.declareCoins(253)).toEqual("The coins you require: 1 times 200 cents, 1 times 50 cents.")
+    });
 
 });

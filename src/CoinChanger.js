@@ -19,6 +19,15 @@ function CoinChanger(){
         }
         return "The coins you require:" + declareArray.toString() + ".";
     }
+
+    this.changeCurrency =  function(currency){
+        if(currency === "gulden"){
+            return this.coins = [500,250,100,50,25,10,5];
+        }
+        else if(currency === "Euro"){
+            return this.coins = [200,100,50,20,10,5,2,1]
+        }
+    };
 };
 
 CoinChanger.prototype.showCoins = function (amount){
@@ -30,4 +39,4 @@ CoinChanger.prototype.declareCoins = function (amount){
     return this.declareNumberOfCoins();
 };
 
-CoinChanger.prototype.coins = [100 , 50 , 20 , 10 , 5 , 2 , 1];
+CoinChanger.prototype.coins = [200,100,50,20,10,5,2,1];

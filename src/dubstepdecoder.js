@@ -1,39 +1,49 @@
 function DubstepDecoder(){
-
-    var replaceForSpace = function replaceForSpace(input){
-        return input.replace("WUB" , " ")
+    var song;
+    var wub = "WUB";
+    var wubSlam
+    var wubCounter = 0;
+    var replaceForSpace = function replaceForSpace(){
+        return song = song.replace(wub , " ")
     };
-    var replaceNoSpace =  function replaceNoSpace(input){
-        return input.replace("WUB" , "")
+    var replaceNoSpace =  function replaceNoSpace(){
+        return song = song.replace(wub , "")
     }
+    var howManyWubs = function(){
+        for (wubCounter = 0; wubCounter < (198/3); wubCounter++){
+            if (wubCounter === song.indexOf(wubSlam)){
+                wubSlam += wub;
+            }
+        }
+    }
+    
+    var replaceTheWub = function replaceTheWub(){
 
-    var replaceTheWub = function replaceTheWub(input){
-        var input = input;
         // if ((WUB is on position 0 || WUB has a space in front ) {replace with empty}
-        if ((input.indexOf("WUB") === 0) || (input.indexOf(" WUB") !== -1)){
-            input = replaceNoSpace(input);
+        if ((song.indexOf(wub) === 0) || (song.indexOf(" " + wub) !== -1)){
+            song = replaceNoSpace(song);
         }
         // else if (last WUB is at the end) && (last WUB is only WUB)
-        else if ((input.lastIndexOf("WUB") === (input.length - 3)) && (input.lastIndexOf("WUB"))===(input.indexOf("WUB"))){
-            input = replaceNoSpace(input);
+        else if ((song.lastIndexOf(wub) === (song.length - 3)) && (song.lastIndexOf(wub))===(song.indexOf(wub))){
+            song = replaceNoSpace(song);
         }
         //else if (there is a WUBWUB) && (those are the last WUBs)
-        else if (input.lastIndexOf("WUBWUB") === (input.length - 6) && (input.lastIndexOf("WUB") - 3)===(input.indexOf("WUB"))){
-            input = replaceNoSpace(input);
+        else if (song.lastIndexOf(wub+wub) === (song.length - 6) && (song.lastIndexOf(wub) - 3)===(song.indexOf(wub))){
+            song = replaceNoSpace();
         }
         else{
-            input = replaceForSpace(input);
+            song = replaceForSpace();
         };
-        return input
+        return song
     };
 
     this.getDecodedString = function getDecodedString(input){
-        var input = input;
-        while(input.indexOf("WUB") !== -1){
-            input = replaceTheWub(input);
+        song = input
+        while(song.indexOf(wub) !== -1){
+            song = replaceTheWub();
         };
 
-        return input;
+        return song;
     };
 };
 DubstepDecoder.prototype.showDecodedString = function showDecodedString(input){

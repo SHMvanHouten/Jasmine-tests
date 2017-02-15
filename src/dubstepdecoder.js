@@ -1,7 +1,8 @@
 function DubstepDecoder(){
 
     this.getDecodedString = function getDecodedString(input){
-        return "ABWUBC";
+
+        return input.replace("WUB", "");
     };
 };
 DubstepDecoder.prototype.showDecodedString = function showDecodedString(input){

@@ -1,13 +1,29 @@
 function DubstepDecoder(){
 
-    var replaceTheWub = function replaceTheWub(input){
+    var replaceForSpace = function replaceForSpace(input){
         return input.replace("WUB" , " ")
+    };
+    var replaceNoSpace =  function replaceNoSpace(input){
+        return input.replace("WUB" , "")
+    }
+
+    var replaceTheWub = function replaceTheWub(input){
+        var input = input;
+        if(input.indexOf(" WUB") !== -1){
+            input = replaceNoSpace(input);
+        }
+        else{
+            input = replaceForSpace(input);
+        };
+        return input
     };
 
     this.getDecodedString = function getDecodedString(input){
-        input = input
-        input = replaceTheWub(input);
-        input = replaceTheWub(input);
+        var input = input;
+        while(input.indexOf("WUB") !== -1){
+            input = replaceTheWub(input);
+        };
+
         return input;
     };
 };

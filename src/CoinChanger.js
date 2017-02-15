@@ -1,9 +1,8 @@
-function CoinChanger(amount){
-    var amount = amount;
+function CoinChanger(){
     var coins = [100,50,20,10,5,2,1];
     var amountOfCoins = [];
 
-    this.showNumberOfCoins = function (){
+    this.showNumberOfCoins = function (amount){
         for (var i=0;i<coins.length;i++){
             amountOfCoins.push(Math.trunc(amount/(coins[i])));
             amount -= (amountOfCoins[i] * coins[i]);
@@ -22,12 +21,12 @@ function CoinChanger(amount){
     }
 };
 
-CoinChanger.prototype.showCoins = function (){
-    return this.showNumberOfCoins();
+CoinChanger.prototype.showCoins = function (amount){
+    return this.showNumberOfCoins(amount);
 };
 
-CoinChanger.prototype.declareCoins = function (){
-    this.showNumberOfCoins();
+CoinChanger.prototype.declareCoins = function (amount){
+    this.showNumberOfCoins(amount);
     return this.declareNumberOfCoins();
 
 };

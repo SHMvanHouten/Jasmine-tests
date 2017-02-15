@@ -28,10 +28,26 @@ describe ("coin changer", function (){
         expect (changer1.declareCoins(77)).toEqual ("The coins you require: 1 times 50 cents, 1 times 20 cents, 1 times 5 cents, 1 times 2 cents.");
     });
 
-    it("should change the coinsystem to 'guldens'", function(){
-       var changer1 = new CoinChanger();
-       changer1.changeCurrency("gulden");
-       expect(changer1.coins).toEqual([500,250,100,50,25,10,5])
+    it("should change the coinsystem to 'gulden'", function(){
+       var changer2 = new CoinChanger();
+       changer2.changeCurrency("gulden");
+       expect(changer2.coins).toEqual([500,250,100,50,25,10,5])
+    });
+    it("should change the coinsystem to 'euro'", function(){
+       var changer3 = new CoinChanger();
+       changer3.changeCurrency("gulden");
+       changer3.changeCurrency("euro");
+       expect(changer3.coins).toEqual([200,100,50,20,10,5,2,1])
+    });
+    it("should tell: The coins you require: 1 times 50 cents, 1 times 25 cents. of input 77", function(){
+       var changer2 = new CoinChanger();
+       changer2.changeCurrency("gulden");
+       expect(changer2.declareCoins(77)).toEqual("The coins you require: 1 times 50 cents, 1 times 25 cents.")
+    });
+    it("should tell: The coins you require: 1 times 50 cents, 1 times 25 cents, 1 times 10 cents, 1 times 5 cents. of input 88", function(){
+       var changer2 = new CoinChanger();
+       changer2.changeCurrency("gulden");
+       expect(changer2.declareCoins(88)).toEqual("The coins you require: 1 times 50 cents, 1 times 25 cents, 1 times 10 cents, 1 times 5 cents.")
     });
 
 });

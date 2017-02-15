@@ -4,9 +4,12 @@ function CoinChanger(){
 
     this.showNumberOfCoins = function (amount){
         for (var i=0;i<this.coins.length;i++){
-            amountOfCoins.push(Math.trunc(amount/(this.coins[i])));
+            amountOfCoins.push(Math.trunc(amount/this.coins[i]));
             amount -= (amountOfCoins[i] * this.coins[i]);
         };
+        if(amount!== 0){
+            amountOfCoins[this.coins.length - 1] = Math.round(amount/this.coins[this.coins.length - 1]);
+        }
         return amountOfCoins;
     };
 
@@ -24,7 +27,7 @@ function CoinChanger(){
         if(currency === "gulden"){
             return this.coins = [500,250,100,50,25,10,5];
         }
-        else if(currency === "Euro"){
+        else if(currency === "euro"){
             return this.coins = [200,100,50,20,10,5,2,1]
         }
     };

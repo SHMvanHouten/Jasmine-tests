@@ -20,6 +20,10 @@ describe("Dubstep Decoder", function(){
         var decoder1 = new DubstepDecoder();
         expect(decoder1.showDecodedString("WUBAWUBBWUBCWUB")).toEqual("A B C")
     });
+    it("should remove all the WUBS and return A B C", function(){
+        var decoder1 = new DubstepDecoder();
+        expect(decoder1.showDecodedString("WUBAWUBBWUBCWUBWUB")).toEqual("A B C")
+    });
 
 
 

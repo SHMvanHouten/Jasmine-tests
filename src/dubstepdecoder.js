@@ -9,8 +9,16 @@ function DubstepDecoder(){
 
     var replaceTheWub = function replaceTheWub(input){
         var input = input;
-        // if ((WUB is on position 0 || WUB has a space in front || WUB is at the end) {replace with empty}
-        if ((input.indexOf("WUB") === 0) || (input.indexOf(" WUB") !== -1) || (input.indexOf("WUB") === (input.length - 3))){
+        // if ((WUB is on position 0 || WUB has a space in front ) {replace with empty}
+        if ((input.indexOf("WUB") === 0) || (input.indexOf(" WUB") !== -1)){
+            input = replaceNoSpace(input);
+        }
+        // else if (last WUB is at the end) && (last WUB is only WUB)
+        else if ((input.lastIndexOf("WUB") === (input.length - 3)) && (input.lastIndexOf("WUB"))===(input.indexOf("WUB"))){
+            input = replaceNoSpace(input);
+        }
+        //else if (there is a WUBWUB) && (those are the last WUBs)
+        else if (input.lastIndexOf("WUBWUB") === (input.length - 6) && (input.lastIndexOf("WUB") - 3)===(input.indexOf("WUB"))){
             input = replaceNoSpace(input);
         }
         else{

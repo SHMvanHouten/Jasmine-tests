@@ -9,7 +9,8 @@ function DubstepDecoder(){
 
     var replaceTheWub = function replaceTheWub(input){
         var input = input;
-        if(input.indexOf(" WUB") !== -1){
+        // if ((WUB is on position 0 || WUB has a space in front || WUB is at the end {replace with empty}
+        if ((input.indexOf("WUB") === 0) || (input.indexOf(" WUB") !== -1) || (input.indexOf("WUB") === (input.length - 3))){
             input = replaceNoSpace(input);
         }
         else{

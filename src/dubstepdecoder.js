@@ -9,14 +9,14 @@ function DubstepDecoder(){
     var replaceNoSpace =  function replaceNoSpace(){
         return song = song.replace(wub , "")
     }
-    var howManyWubs = function(){
-        for (wubCounter = 0; wubCounter < (198/3); wubCounter++){
-            if (wubCounter === song.indexOf(wubSlam)){
-                wubSlam += wub;
-            }
-        }
-    }
-    
+//    var howManyWubs = function(){
+//        for (wubCounter = 0; wubCounter < (198/3); wubCounter++){
+//            if (wubCounter === song.indexOf(wubSlam)){
+//                wubSlam += wub;
+//            }
+//        }
+//    }
+//
     var replaceTheWub = function replaceTheWub(){
 
         // if ((WUB is on position 0 || WUB has a space in front ) {replace with empty}
@@ -42,7 +42,9 @@ function DubstepDecoder(){
         while(song.indexOf(wub) !== -1){
             song = replaceTheWub();
         };
-
+        while(song.lastIndexOf(" ") === song.length - 1){
+            song = song.slice(0, -1)
+        }
         return song;
     };
 };

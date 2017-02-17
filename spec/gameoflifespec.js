@@ -16,7 +16,7 @@ describe ("GameofLife", function (){
     it ("should kill a cell", function(){
         game.markCellAsAlive(3,3);
         game.markCellAsDead(3,3)
-        expect (game.isMirrorCellAlive(3,3)).toBeFalsy();
+        expect (game.isCellAlive(3,3)).toBeFalsy();
     });
     it ("should kill a cell with <2 live neighbours", function(){
         game.markCellAsAlive(3,3);
@@ -59,12 +59,13 @@ describe ("GameofLife", function (){
         game.initiateEvolution();
         expect (game.isMirrorCellAlive(3,3)).toBeFalsy();
     });
-//    it ("should create a copy of the grid array and mark target cell as alive", function(){
-//        game.markCellAsAlive(4,4);
-//        game.markCellAsAlive(2,3);
-//        game.initiateEvolution();
-//        expect (game.isMirrorCellAlive(4,4)).toBeTruthy();
-//    });
+    it ("should create a copy of the grid array and mark target cell as alive", function(){
+        game.markCellAsAlive(3,4);
+        game.markCellAsAlive(5,4);
+        game.markCellAsAlive(4,4);
+        game.initiateEvolution();
+        expect (game.isMirrorCellAlive(4,4)).toBeTruthy();
+    });
 
 
 

@@ -66,6 +66,14 @@ describe ("GameofLife", function (){
         game.initiateEvolution();
         expect (game.isMirrorCellAlive(4,4)).toBeTruthy();
     });
+    it ("should create a copy of the grid array and mark target cell as alive for the edges of the grid", function(){
+        game.markCellAsAlive(0,0);
+        game.markCellAsAlive(0,1);
+        game.markCellAsAlive(1,0);
+        game.initiateEvolution();
+        expect (game.isMirrorCellAlive(0,0)).toBeTruthy();
+    });
+
 
 
 

@@ -5,9 +5,9 @@ function GameOfLife(){
 
     function createArray(rows) { //creates a 2 dimensional array of required height
         var arr = [];
-        for (var i=0; i<64; i++) {
+        for (var i=-1; i<=rows; i++) {
                 arr[i] = [];
-               for (var j=0; j<64; j++) {
+               for (var j=-1; j<=rows; j++) {
                 arr[i][j] = false;
             }
         }
@@ -81,8 +81,8 @@ function GameOfLife(){
         this.cycleThroughXY();
     };
     this.cycleThroughXY = function(){
-        for(var x=1; x<=15; x++){
-            for(var y=1; y<=15; y++){
+        for(var x=0; x<=14; x++){
+            for(var y=0; y<=14; y++){
                 this.processMirrorCells(x,y);
             };
         };

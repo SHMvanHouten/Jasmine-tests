@@ -13,19 +13,50 @@ function GameOfLife(){
         }
         return arr;
     }
-    this.countAmountOfNeighbours = function countAmountOfNeighbours(x,y){
-        if(this.isCellAlive(x-1,y-1)){ amountOfNeighbours++ };
+    this.counAmountOfNeighboursForX0 = function(x,y){
         if(this.isCellAlive(x,y-1))  { amountOfNeighbours++ };
         if(this.isCellAlive(x+1,y-1)){ amountOfNeighbours++ };
-        if(this.isCellAlive(x-1,y))  { amountOfNeighbours++ };
         if(this.isCellAlive((x+1),y)){ amountOfNeighbours++ };
-        if(this.isCellAlive(x-1,y+1)){ amountOfNeighbours++ };
         if(this.isCellAlive(x,y+1))  { amountOfNeighbours++ };
         if(this.isCellAlive(x+1,y+1)){ amountOfNeighbours++ };
     };
+    this.countAmountOfNeighboursForY0 = function(x,y){
+        if(this.isCellAlive(x-1,y))  { amountOfNeighbours++ };
+        if(this.isCellAlive(x-1,y+1)){ amountOfNeighbours++ };
+        if(this.isCellAlive((x+1),y)){ amountOfNeighbours++ };
+        if(this.isCellAlive(x,y+1))  { amountOfNeighbours++ };
+        if(this.isCellAlive(x+1,y+1)){ amountOfNeighbours++ };
+    };
+    this.countAmountOfNeighboursForXAnddY0 = function(x,y){
+        if(this.isCellAlive((x+1),y)){ amountOfNeighbours++ };
+        if(this.isCellAlive(x,y+1))  { amountOfNeighbours++ };
+        if(this.isCellAlive(x+1,y+1)){ amountOfNeighbours++ };
+    };
+    this.countAmountOfNeighbours = function countAmountOfNeighbours(x,y){
+        if(this.isCellAlive(x-1,y))  { amountOfNeighbours++ };
+        if(this.isCellAlive(x-1,y+1)){ amountOfNeighbours++ };
+        if(this.isCellAlive(x-1,y-1)){ amountOfNeighbours++ };
+        if(this.isCellAlive(x,y-1))  { amountOfNeighbours++ };
+        if(this.isCellAlive(x+1,y-1)){ amountOfNeighbours++ };
+        if(this.isCellAlive((x+1),y)){ amountOfNeighbours++ };
+        if(this.isCellAlive(x,y+1))  { amountOfNeighbours++ };
+        if(this.isCellAlive(x+1,y+1)){ amountOfNeighbours++ };
+    };
+    this.getAmountOfNeighbours = function(x,y){
+        if(x === 0 && y == 0){
+            this.countAmountOfNeighboursForXAnddY0(x,y);
+        }
+        else if(x === 0){
+            this.counAmountOfNeighboursForX0(x,y);
+        }
+        else if(y === 0){
+            this.countAmountOfNeighboursForY0(x,y)
+        }
+        else{this.countAmountOfNeighbours(x,y)}
+    };
 
     this.checkForUnderPopulation = function (x,y){
-        this.countAmountOfNeighbours(x,y);
+        this.getAmountOfNeighbours(x,y);
         if (amountOfNeighbours<2){
             this.markMirrorCellAsDead(x,y);
         }
@@ -33,7 +64,7 @@ function GameOfLife(){
     };
 
     this.checkForOverPopulation = function (x,y){
-        this.countAmountOfNeighbours(x,y);
+        this.getAmountOfNeighbours(x,y);
         if (amountOfNeighbours>=4){
             this.markMirrorCellAsDead(x,y);
         }
@@ -41,7 +72,7 @@ function GameOfLife(){
     };
 
     this.checkForReproduction =  function(x,y){
-        this.countAmountOfNeighbours(x,y);
+        this.getAmountOfNeighbours(x,y);
         if (amountOfNeighbours === 3){
             this.markMirrorCellAsAlive(x,y);
         };
@@ -81,8 +112,8 @@ function GameOfLife(){
         this.cycleThroughXY();
     };
     this.cycleThroughXY = function(){
-        for(var x=1; x<=15; x++){
-            for(var y=1; y<=15; y++){
+        for(var x=0; x<=15; x++){
+            for(var y=0; y<=15; y++){
                 this.processMirrorCells(x,y);
             };
         };

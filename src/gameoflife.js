@@ -79,6 +79,7 @@ function GameOfLife(){
     };
     this.initiateEvolution = function(){
         this.cycleThroughXY();
+        theGrid = theGridMirror;
     };
     this.cycleThroughXY = function(){
         for(var x=0; x<=14; x++){

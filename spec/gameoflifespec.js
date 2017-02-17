@@ -73,6 +73,17 @@ describe ("GameofLife", function (){
         game.initiateEvolution();
         expect (game.isMirrorCellAlive(0,0)).toBeTruthy();
     });
+    it ("should change the values of the grid to those of the mirror grid", function(){
+        game.markCellAsAlive(0,0);
+        game.markCellAsAlive(0,1);
+        game.markCellAsAlive(1,0);
+        game.markCellAsAlive(3,3);
+        game.markCellAsAlive(3,4);
+        game.initiateEvolution();
+
+        expect(game.isCellAlive(0,0)).toBeTruthy();
+        expect(game.isCellAlive(3,3)).toBeFalsy();
+    });
 
 
 

@@ -27,5 +27,10 @@ describe("DuplicateCoder", function(){
         expect(coder.getCode()).toEqual("()()()")
 
     })
+    it("should code the input 'Success' into )())())", function(){
+        coder =new DuplicateCoder("Success");
+        expect(coder.getCode()).toEqual(")())())")
+
+    })
 
 });

@@ -1,4 +1,5 @@
 function DuplicateCoder(input){
+    var input = input.toLowerCase();
     var outputString = "";
     this.findDuplicates = function(letter) {
         if (input.indexOf(letter)===input.lastIndexOf(letter)){

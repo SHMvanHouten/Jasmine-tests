@@ -3,6 +3,7 @@ function rowSumOddNumbers(n) {
     for (var i = 1; i<=n; i++){
         pyramidLevel.push((n * (n - 1))+(i-1)*2 +1);
     };
+    console.log(n = " gives " + pyramidLevel);
     var sum = pyramidLevel.reduce(function(acc, val) {
         return acc + val;
     }, 0)

@@ -1,14 +1,12 @@
 function DuplicateCoder(input){
     var outputString = "";
-    var letterTracker = [];
     this.findDuplicates = function(letter) {
-        if (letterTracker.indexOf(letter)>-1){
-            outputString += ")";
+        if (input.indexOf(letter)===input.lastIndexOf(letter)){
+            outputString += "(";
 
         }
         else{
-            outputString += "(";
-            letterTracker.push(letter);
+            outputString += ")";
         }
 
     };

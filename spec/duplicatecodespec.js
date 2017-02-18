@@ -12,19 +12,19 @@
 //
 // "(( @" => "))(("
 describe("DuplicateCoder", function(){
-    it("should code the input into (((", function(){
+    it("should code the input 'din' into (((", function(){
         coder =new DuplicateCoder("din");
         expect(coder.getCode()).toEqual("(((")
 
     });
-    it("should code the input into ((", function(){
+    it("should code the input 'de' into ((", function(){
         coder =new DuplicateCoder("de");
         expect(coder.getCode()).toEqual("((")
 
     });
-    it("should code the input into ()", function(){
-        coder =new DuplicateCoder("dd");
-        expect(coder.getCode()).toEqual("()")
+    it("should code the input 'recede' into ()()()", function(){
+        coder =new DuplicateCoder("recede");
+        expect(coder.getCode()).toEqual("()()()")
 
     })
 

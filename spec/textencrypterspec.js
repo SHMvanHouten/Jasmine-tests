@@ -1,4 +1,6 @@
+// Remove every second letter from the input string
 // The removed letters should be appended to a new string removing it from the old string.
+// the letters that are left will be appended to the end of the new string.
 // do the encryption n times.
 // Examples:
 //
@@ -28,7 +30,7 @@ describe("TextEncrypter", function(){
         expect(encrypter.showOriginalArray()).toEqual(["T", "h", "i", "s", " ", "i", "s", " ", "a", "l", "s", "o", " ", "a", " ", "t", "e", "s", "t", "!"]);
     })
 
-    xit("should return the amended string where every second character in the original string was added in sequence", function(){
+    it("should return the amended string where every second character in the original string was added in sequence", function(){
         encrypter.inputText("This is a test!");
         expect(encrypter.getEncodedText()).toEqual("hsi  etTi sats!");
     })

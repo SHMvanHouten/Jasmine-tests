@@ -15,7 +15,7 @@
 //     If n is <= 0 then return the input text.
 describe("TextEncrypter", function(){
     beforeEach(function(){
-        encrypter = new TextEncrypter;
+        encrypter = new TextEncrypter();
     })
     it("should return the string with no changes to it if amount of iterations is 0", function(){
         expect(encrypter.getEncodedText("This is a test!", 0)).toEqual("This is a test!");
@@ -30,5 +30,14 @@ describe("TextEncrypter", function(){
     it("should return the amended string 2 times", function(){
         expect(encrypter.getEncodedText("This is a test!", 2)).toEqual("s eT ashi tist!");
     })
+
+})
+describe("TextDecrypter", function(){
+    beforeEach(function(){
+        decrypter = new TextDecrypter();
+    });
+    it("should return the original text if amount of decryption iterations is 0", function(){
+        expect(decrypter.getDecodedText("This is a test!", 0)).toEqual("This is a test!");
+    });
 
 })

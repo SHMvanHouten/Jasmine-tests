@@ -17,5 +17,9 @@ describe("LongestConsecutiveString", function(){
         searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
         expect(searcher.getHighestStringLength()).toEqual(7);
     });
+    it("should make an array of the sums of each pair of consecutive array lengths", function(){
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
+        expect(searcher.getStringPairLengths()).toEqual([11,12,9,8,7,8,12]);
+    });
 
 })

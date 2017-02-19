@@ -26,10 +26,10 @@ function LongestConsecutiveString(array, k){
         return Math.max.apply(null, stringPairLengths);
     };
     this.locateHighestStringLength = function(){
-        console.log(stringPairLengths.indexOf(this.getHighestStringLength()))
         return stringPairLengths.indexOf(this.getHighestStringLength());
     };
     this.getNameHighestStringLength = function(){
+        if(array.length === 0 || k > array.length || k <= 0){return ""}
         var name = "";
         for (var i = 0; i< k; i++){
             name += array[this.locateHighestStringLength() + i];

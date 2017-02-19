@@ -37,5 +37,10 @@ describe("LongestConsecutiveString", function(){
         searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],3)
         expect(searcher.getNameHighestStringLength()).toEqual("zoneabigailtheta");
     });
+    it("should return just /"/" when a false input is given", function(){
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],0)
+        expect(searcher.getNameHighestStringLength()).toEqual("");
+    });
+
 
 })

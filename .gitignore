@@ -1,2 +1,4 @@
 .idea
 /.idea
+/spec/membercheckerspec.js
+/src/memberchecker.js

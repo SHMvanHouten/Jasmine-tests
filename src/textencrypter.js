@@ -5,6 +5,8 @@ function TextEncrypter(){
     var amendedTextExtra = "";
     var encodeText = function encodeText(){
         originalArray = originalText.split("");
+        amendedText = ""
+        amendedTextExtra = ""
         for (var i = 0; i < originalArray.length; i++){
             if( i % 2 === 0){
                 amendedTextExtra += originalArray[i];
@@ -15,16 +17,16 @@ function TextEncrypter(){
         };
         amendedText += amendedTextExtra;
     };
-    this.inputText = function inputText(text){
+    this.getEncodedText = function getEncodedText(text, amountOfIterations){
         originalText = text;
-    };
-    this.getEncodedText = function getEncodedText(){
-        encodeText();
+        for (i = 0; i < amountOfIterations; i++){
+            encodeText();
+            originalText = amendedText;
+        }
+        if (amountOfIterations === 0){
+            return originalText;
+        }
         return amendedText;
     };
 
-    this.showOriginalArray = function(){
-        encodeText();
-        return originalArray;
-    }
-}
+};

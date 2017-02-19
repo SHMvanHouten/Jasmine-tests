@@ -17,22 +17,18 @@ describe("TextEncrypter", function(){
     beforeEach(function(){
         encrypter = new TextEncrypter;
     })
-    xit("should return the string witb no changes to it", function(){
-        encrypter.inputText("This is a test!");
-        expect(encrypter.getEncodedText()).toEqual("This is a test!");
+    it("should return the string with no changes to it if amount of iterations is 0", function(){
+        expect(encrypter.getEncodedText("This is a test!", 0)).toEqual("This is a test!");
     })
-    xit("should return the string witb no changes to it", function(){
-        encrypter.inputText("This is also a test!");
-        expect(encrypter.getEncodedText()).toEqual("This is also a test!");
-    })
-    it("should return the string as an array", function(){
-        encrypter.inputText("This is also a test!");
-        expect(encrypter.showOriginalArray()).toEqual(["T", "h", "i", "s", " ", "i", "s", " ", "a", "l", "s", "o", " ", "a", " ", "t", "e", "s", "t", "!"]);
+    it("should return the string with no changes to it if amount of iterations is 0", function(){
+        expect(encrypter.getEncodedText("This is also a test!", 0)).toEqual("This is also a test!");
     })
 
     it("should return the amended string where every second character in the original string was added in sequence", function(){
-        encrypter.inputText("This is a test!");
-        expect(encrypter.getEncodedText()).toEqual("hsi  etTi sats!");
+        expect(encrypter.getEncodedText("This is a test!", 1)).toEqual("hsi  etTi sats!");
+    })
+    it("should return the amended string 2 times", function(){
+        expect(encrypter.getEncodedText("This is a test!", 2)).toEqual("s eT ashi tist!");
     })
 
 })

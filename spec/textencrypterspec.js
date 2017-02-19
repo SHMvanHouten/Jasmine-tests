@@ -39,5 +39,8 @@ describe("TextDecrypter", function(){
     it("should return the original text if amount of decryption iterations is 0", function(){
         expect(decrypter.getDecodedText("This is a test!", 0)).toEqual("This is a test!");
     });
+    it("should return once decoded text if amount of decryption iterations is 1", function(){
+        expect(decrypter.getDecodedText("hsi  etTi sats!", 1)).toEqual("This is a test!");
+    });
 
 })

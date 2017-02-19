@@ -15,7 +15,6 @@ function TextDecrypter(){
         if(secondHalfOfSlicedTextLength>firstHalfOfSlicedTextLength){
             amendedText += secondHalfOfSlicedText[secondHalfOfSlicedTextLength - 1]
         }
-        console.log(firstHalfOfSlicedText + " and " + secondHalfOfSlicedText )
     }
 
     this.getDecodedText =  function(text,amountOfIterations){
@@ -23,7 +22,10 @@ function TextDecrypter(){
             return text;
         };
         encryptedText = text;
+        for(var i = 0; i<amountOfIterations; i++){
         decryptText();
+        encryptedText = amendedText;
+        }
         return amendedText
 
     }

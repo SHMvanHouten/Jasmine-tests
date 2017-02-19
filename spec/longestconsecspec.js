@@ -8,12 +8,12 @@
 
 
 describe("LongestConsecutiveString", function(){
-    it("should return an array with the length of each input (string) element", function(){
+    xit("should return an array with the length of each input (string) element", function(){
         searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
         expect(searcher.getStringLengths(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])).toEqual([4,7,5,4,4,3,5,7]);
     });
 
-    it("should tell which array is the longest", function(){
+    xit("should tell which array is the longest", function(){
         searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
         expect(searcher.getHighestStringLength()).toEqual(7);
     });

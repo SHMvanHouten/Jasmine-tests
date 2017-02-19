@@ -1,18 +1,17 @@
 function LongestConsecutiveString(array){
-    var lengthsArray = [];
+//    var lengthsArray = [];
     var stringPairLengths = [];
 
-    this.getStringLengths = function(){
-        lengthsArray = array.map(function(element){
-            return element.length;
-        });
-    return lengthsArray
-    };
+//    this.getStringLengths = function(){
+//        lengthsArray = array.map(function(element){
+//            return element.length;
+//        });
+//    return lengthsArray
+//    };
 
     this.getStringPairLengths = function(){
-        this.getStringLengths();
-        for (var i = 0; i < lengthsArray.length -1; i++){
-            stringPairLengths.push(lengthsArray[i]+ lengthsArray[i+1]);
+        for (var i = 0; i < array.length -1; i++){
+            stringPairLengths.push(array[i].length + array[i+1].length);
         }
         return stringPairLengths;
     }

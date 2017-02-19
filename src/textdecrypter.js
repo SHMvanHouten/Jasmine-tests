@@ -18,7 +18,7 @@ function TextDecrypter(){
     }
 
     this.getDecodedText =  function(text,amountOfIterations){
-        if(amountOfIterations===0){
+        if(amountOfIterations<=0){
             return text;
         };
         encryptedText = text;

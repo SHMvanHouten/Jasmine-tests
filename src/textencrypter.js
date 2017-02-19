@@ -20,7 +20,7 @@ function TextEncrypter(){
     };
 
     this.getEncodedText = function getEncodedText(text, amountOfIterations){
-        if (amountOfIterations === 0){
+        if (amountOfIterations <= 0){
             return text;
         }
         originalText = text;

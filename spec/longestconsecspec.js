@@ -17,21 +17,25 @@ describe("LongestConsecutiveString", function(){
         searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
         expect(searcher.getHighestStringLength()).toEqual(7);
     });
-    it("should make an array of the sums of each pair of consecutive array lengths", function(){
-        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
+    xit("should make an array of the sums of each pair of consecutive array lengths", function(){
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],2)
         expect(searcher.getStringPairLengths()).toEqual([11,12,9,8,7,8,12]);
     });
-    it("should ascertain which string pair has the highest value", function(){
-        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
+    xit("should ascertain which string pair has the highest value", function(){
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],2)
         expect(searcher.getHighestStringLength()).toEqual(12);
     });
     it("should locate the first highest pair value", function(){
-        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],2)
         expect(searcher.locateHighestStringLength()).toEqual(1);
     });
     it("should name the first highest pair value", function(){
-        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],2)
         expect(searcher.getNameHighestStringLength()).toEqual("abigailtheta");
+    });
+    it("should name the first highest trio value", function(){
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],3)
+        expect(searcher.getNameHighestStringLength()).toEqual("zoneabigailtheta");
     });
 
 })

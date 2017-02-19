@@ -20,4 +20,7 @@ function LongestConsecutiveString(array){
         this.getStringPairLengths();
         return Math.max.apply(null, stringPairLengths);
     };
+    this.locateHighestStringLength = function(){
+        return stringPairLengths.indexOf(this.getHighestStringLength());
+    }
 }

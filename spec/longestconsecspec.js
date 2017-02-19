@@ -29,5 +29,9 @@ describe("LongestConsecutiveString", function(){
         searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
         expect(searcher.locateHighestStringLength()).toEqual(1);
     });
-    
+    it("should name the first highest pair value", function(){
+        searcher = new LongestConsecutiveString(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"])
+        expect(searcher.getNameHighestStringLength()).toEqual("abigailtheta");
+    });
+
 })

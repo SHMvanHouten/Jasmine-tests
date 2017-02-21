@@ -7,7 +7,9 @@ function Rot13Encoder(message){
         var map = Array.prototype.map;
         newCodesArray = map.call(message, function(x){
             var code = x.charCodeAt(0);
-            return (code + 13);
+            if( code > 78 && code <= 91 ||code > 110){code -= 13 }
+            else{code += 13};
+            return code;
         });
     };
     this.showCodesArray = function(){

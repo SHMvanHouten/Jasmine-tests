@@ -9,10 +9,10 @@ describe("Rot13Encoder", function(){
         encoder.getNewCodesArray();
         expect(encoder.showCodesArray()).toEqual([116,101,115,116,116,116]);
     })
-    it("should return an array of +13 character codes for each number in the codesArray", function(){
+    it("should return an array of +/-13 character codes for each number in the codesArray depending if they are over or under half of the alphabet", function(){
         encoder = new Rot13Encoder("test");
         encoder.getNewCodesArray();
-        expect(encoder.showCodesArray()).toEqual([129,114,128,129]);
+        expect(encoder.showCodesArray()).toEqual([103,114,102,103]);
     })
 
 });

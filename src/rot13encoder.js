@@ -14,4 +14,7 @@ function Rot13Encoder(message){
 
         return newCodesArray;
     }
+    this.getEncodedMessage = function(){
+        return String.fromCharCode(...newCodesArray)
+    }
 };

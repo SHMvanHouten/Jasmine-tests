@@ -9,12 +9,10 @@ function Rot13Encoder(message){
             else{code += 13};
             return code;
         });
-    };
-    this.showCodesArray = function(){
-
         return newCodesArray;
-    }
+    };
     this.getEncodedMessage = function(){
+        this.getNewCodesArray();
         return String.fromCharCode(...newCodesArray)
     }
 };

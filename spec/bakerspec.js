@@ -11,21 +11,17 @@
 //cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
 
 describe("BakerHelper", function(){
-    it("should return a list of each of the property-names of the input ingredient list", function(){
-        helper = new BakerHelper({flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
-        expect(helper.getRecipeIngredients()).toEqual(["flour","sugar","eggs"]);
-    });
-    it("should return a list of each of the property-names of the input ingredient list", function(){
-        helper = new BakerHelper({apples: 3, flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
-        expect(helper.getRecipeIngredients()).toEqual(["apples","flour","sugar","eggs"]);
-    });
-    it("should return a list of each of the property-names of the input stock list", function(){
-        helper = new BakerHelper({apples: 3, flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
-        expect(helper.getStock()).toEqual(["flour", "sugar", "eggs", "milk"]);
-    });
     it("should check if each item in the ingredients list is accounted for in the stock list", function(){
         helper = new BakerHelper({apples: 3, flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
-        expect(helper.checkStockSufficiency()).toEqual(false);
+        expect(helper.amountOfCakesPossible()).toEqual(0);
+    });
+    xit("should check if each item in the ingredients list is accounted for in the stock list and how many times stock-items can be provided for each ingredient item", function(){
+        helper = new BakerHelper({flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+        expect(helper.amountOfCakesPossible()).toEqual([2,6,5]);
+    });
+    it("should say how many times the recipe can be made", function(){
+        helper = new BakerHelper({flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+        expect(helper.amountOfCakesPossible()).toEqual(2);
     });
 
 

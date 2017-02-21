@@ -11,9 +11,13 @@
 //cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
 
 describe("BakerHelper", function(){
-    it("should return a list of each of the propertynames of the input ingredient list", function(){
+    it("should return a list of each of the property-names of the input ingredient list", function(){
         helper = new BakerHelper({flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
         expect(helper.getRecipeIngredients()).toEqual(["flour","sugar","eggs"]);
     });
-    
+    it("should return a list of each of the property-names of the input ingredient list", function(){
+        helper = new BakerHelper({apples: 3, flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+        expect(helper.getRecipeIngredients()).toEqual(["apples","flour","sugar","eggs"]);
+    });
+
 })

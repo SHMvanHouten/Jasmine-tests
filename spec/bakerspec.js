@@ -19,5 +19,9 @@ describe("BakerHelper", function(){
         helper = new BakerHelper({apples: 3, flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
         expect(helper.getRecipeIngredients()).toEqual(["apples","flour","sugar","eggs"]);
     });
+    it("should return a list of each of the property-names of the input stock list", function(){
+        helper = new BakerHelper({apples: 3, flour: 500, sugar: 200, eggs: 1},{flour: 1200, sugar: 1200, eggs: 5, milk: 200});
+        expect(helper.getStock()).toEqual(["flour", "sugar", "eggs", "milk"]);
+    });
 
 })

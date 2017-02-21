@@ -1,13 +1,11 @@
 function Rot13Encoder(message){
     var newCodesArray = []
     this.getNewCodesArray = function(){
-//        var a = map.call('Hello World', function(x) {
-//          return x.charCodeAt(0);
-//        });
         var map = Array.prototype.map;
         newCodesArray = map.call(message, function(x){
             var code = x.charCodeAt(0);
-            if( code > 78 && code <= 91 ||code > 110){code -= 13 }
+            if( code < 65 || code>91 && code <97 || code >122){}
+            else if(code >77 && code <= 91 ||code > 110){code = code -= 13}
             else{code += 13};
             return code;
         });

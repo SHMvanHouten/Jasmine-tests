@@ -14,5 +14,10 @@ describe("Rot13Encoder", function(){
         encoder.getNewCodesArray();
         expect(encoder.showCodesArray()).toEqual([103,114,102,103]);
     })
+    it("should not change any character that is not a roman letter", function(){
+        encoder = new Rot13Encoder("test~");
+        encoder.getNewCodesArray();
+        expect(encoder.showCodesArray()).toEqual([103,114,102,103,126]);
+    })
 
 });

@@ -17,4 +17,9 @@ describe("Autocomplete", function(){
         autocompleter = new Autocomplete('ai', ['airplane','airport','apple','ball']);
         expect(autocompleter.getMatches()).toEqual(['airplane', 'airport']);
     });
+    it("should ignore the input of anything that is not a letter", function(){
+        autocompleter = new Autocomplete('2#ai9$:.', ['airplane','airport','apple','ball']);
+        expect(autocompleter.getMatches()).toEqual(['airplane', 'airport']);
+    });
+
 })

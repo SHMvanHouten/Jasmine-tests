@@ -13,13 +13,21 @@
 //
 //Any input that is NOT a letter should be treated as if it is not there. For example, an input of "$%^" should be treated as "" and an input of "ab*&1cd" should be treated as "abcd".
 describe("Autocomplete", function(){
-    it("should find matches for the combination of symbols in the array", function(){
+    xit("should find matches for the combination of symbols in the array", function(){
         autocompleter = new Autocomplete('ai', ['airplane','airport','apple','ball']);
         expect(autocompleter.getMatches()).toEqual(['airplane', 'airport']);
     });
-    it("should ignore the input of anything that is not a letter", function(){
+    xit("should ignore the input of anything that is not a letter", function(){
         autocompleter = new Autocomplete('2#ai9$:.', ['airplane','airport','apple','ball']);
         expect(autocompleter.getMatches()).toEqual(['airplane', 'airport']);
+    });
+    it("should ignore only return the results that start with the input letters", function(){
+        autocompleter = new Autocomplete('2#ai9$:.', ['airplane','airport','apple','ball', 'hair', 'fair', 'fairy']);
+        expect(autocompleter.getMatches()).toEqual(['airplane', 'airport']);
+    });
+    it("should only return the first five matches", function(){
+        autocompleter = new Autocomplete('2#a9$:.', ['airplane','airport','apple','all', 'hair', 'air', 'fairy', 'agnostic', 'anti', 'ant']);
+        expect(autocompleter.getMatches()).toEqual(['airplane', 'airport', 'apple', 'all', 'air']);
     });
 
 })

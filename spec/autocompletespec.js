@@ -29,5 +29,10 @@ describe("Autocomplete", function(){
         autocompleter = new Autocomplete('2#a9$:.', ['airplane','airport','apple','all', 'hair', 'air', 'fairy', 'agnostic', 'anti', 'ant']);
         expect(autocompleter.getMatches()).toEqual(['airplane', 'airport', 'apple', 'all', 'air']);
     });
+    it("should only return the matches including the dictionary items with symbols and capital letters", function(){
+        autocompleter = new Autocomplete('2#z9$:.', ['Zeus', 'Zelda', 'zap-machine']);
+        expect(autocompleter.getMatches()).toEqual(['Zeus', 'Zelda', 'zap-machine']);
+    });
+
 
 })

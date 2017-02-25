@@ -15,5 +15,9 @@ describe("harshad", function(){
         expect(test.isValid(135)).toBeTruthy();
         expect(test.isValid(134)).toBeFalsy();
     });
-
+    it("should return the next number after given number that is a Harshad number", function(){
+        expect(test.getNext(11)).toEqual(12);
+        expect(test.getNext(12)).toEqual(18)
+    });
+    
 });

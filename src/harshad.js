@@ -10,4 +10,12 @@ function HarshadTester(){
     this.isValid = function(input){
         return (input % this.addUpDigits(input) === 0)
     };
+    this.getNext = function(i){
+        while (i<=2000){
+            i++
+            if (this.isValid(i)){
+                return i;
+            }
+        };
+    };
 };

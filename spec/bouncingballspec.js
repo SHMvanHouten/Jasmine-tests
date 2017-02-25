@@ -12,3 +12,9 @@
 //Example:
 //h = 3, bounce = 0.66, window = 1.5, result is 3
 //h = 3, bounce = 1, window = 1.5, result is -1.
+describe("BouncingBall", function(){
+    it("should return -1 if one of the conditions is not met", function(){
+        test = new BouncingBall(3, 1, 1.5);
+        expect(test.getResult()).toEqual(-1);
+    });
+});

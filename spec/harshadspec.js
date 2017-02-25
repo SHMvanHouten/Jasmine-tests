@@ -19,5 +19,11 @@ describe("harshad", function(){
         expect(test.getNext(11)).toEqual(12);
         expect(test.getNext(12)).toEqual(18)
     });
-    
+    it("should return the next 3 numbers after the input numbers that are Harshad numbers", function(){
+        expect(test.getSeries(3,11)).toEqual([12,18,20]);
+    });
+    it("should return the next 10 numbers after the input numbers that are Harshad numbers", function(){
+        expect(test.getSeries(10,0)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42]);
+    });
+
 });

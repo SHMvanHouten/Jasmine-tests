@@ -18,4 +18,12 @@ function HarshadTester(){
             }
         };
     };
+    this.getSeries = function(n, input){
+        harshadArray = [];
+        for(i=0; i<n; i++){
+            harshadArray.push(this.getNext(input));
+            input = this.getNext(input);
+        };
+        return harshadArray;
+    };
 };

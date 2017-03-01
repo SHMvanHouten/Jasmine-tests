@@ -7,7 +7,7 @@ function CharacterCounter(string){
     }
     this.getLetterAmountObject = function(){
         var letterAmountObject ={};
-        arr = string.match(/[a-z]/g).sort();
+        var arr = string.match(/[a-z]/g).sort();
         arr.forEach(function(element){
             if(letterAmountObject[element]>0){
                 letterAmountObject[element]++;

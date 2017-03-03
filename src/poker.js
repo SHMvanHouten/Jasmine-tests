@@ -2,6 +2,12 @@ function HandOfCards (cards){
 
 }
 function Dealer(){
+    var pictureValues = {T: 10, J: 11, Q: 12, K:13,A:14};
+
+    this.determineValue = function(value){
+        if (isNaN(value)){return pictureValues[value];}
+        return Number(value);
+    };
 
 }
 Dealer.prototype.checkForPair = function(hand){
@@ -13,6 +19,16 @@ Dealer.prototype.checkForPair = function(hand){
     return 0;
 };
 Dealer.prototype.getHighestCard = function(hand){
-    if(hand[0][0] === "Q"){return hand [0][0]}
-    return hand[1][0];
-}
+    var highestValue = 0;
+    var faces = ["T","J","Q","K","A"];
+    for(var i = 0; i<5; i++){
+        var value = this.determineValue(hand[i][0]);
+        if (value> highestValue){highestValue = value}
+    }
+    if (highestValue<10){return highestValue;}
+    else{
+        for(var j = 0; j<5;j++){
+            if(j+10 === highestValue){return faces[j]}
+        }
+    }
+};

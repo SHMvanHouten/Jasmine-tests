@@ -35,5 +35,13 @@ describe("Poker", function(){
         hand = ["QS","3H","3H","7H","6D"];
         expect(dealer.getHighestCard(hand)).toEqual("Q");
     })
+    it("should determine the King is the highest card in the hand", function(){
+        hand = ["KS","3H","3H","7H","6D"];
+        expect(dealer.getHighestCard(hand)).toEqual("K");
+    })
+    it("should determine the Ace is the highest card in the hand", function(){
+        hand = ["KS","AH","3H","7H","6D"];
+        expect(dealer.getHighestCard(hand)).toEqual("A");
+    })
 
 });

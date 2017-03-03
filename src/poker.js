@@ -39,12 +39,7 @@ function Dealer(){
 
 }
 Dealer.prototype.checkForPair = function(hand){
-    for(var i = 0; i<hand.length; i++){
-        for(var j = i+1; j<hand.length; j++){
-            if(hand[i][0] === hand[j][0]){return hand[i][0]}
-       }
-    }
-    return 0;
+    return this.checkForRecurring(hand,2);
 };
 Dealer.prototype.getHighestCard = function(hand){
     var highestValue = this.getHighestValue(hand);

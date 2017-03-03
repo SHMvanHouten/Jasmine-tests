@@ -12,3 +12,6 @@ Dealer.prototype.checkForPair = function(hand){
     }
     return 0;
 };
+Dealer.prototype.getHighestCard = function(hand){
+    return "K"
+}

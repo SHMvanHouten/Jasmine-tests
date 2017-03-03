@@ -23,5 +23,8 @@ describe("Poker", function(){
         expect(dealer.checkForPair(hand)).toEqual(3);
     });
 
-    
+    it("should determine the King is the highest card in the hand", function(){
+        hand = ["3S","KH","3H","7H","6D"];
+        expect(dealer.getHighestCard(hand)).toEqual("K");
+    })
 });

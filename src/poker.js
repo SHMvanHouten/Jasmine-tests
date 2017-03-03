@@ -23,6 +23,19 @@ function Dealer(){
         }
         return hand;
     }
+    this.checkForRecurring = function(hand, recurrenceNeeded){
+        for(var i = 0; i<hand.length; i++){
+            var amountRecurring = 1;
+            for(var j = i+1; j<hand.length; j++){
+                if(hand[i][0] === hand[j][0]){
+                    amountRecurring++
+                    if(amountRecurring === recurrenceNeeded){return hand[i][0]}
+                }
+            }
+            amountRecurring = 1;
+        }
+        return 0;
+    }
 
 }
 Dealer.prototype.checkForPair = function(hand){
@@ -57,6 +70,6 @@ Dealer.prototype.checkForTwoPair = function(hand){
     }
     return 0;
 };
-Dealer.prototype.checkForThreeOfAKind = function(){
-    return "A";
+Dealer.prototype.checkForThreeOfAKind = function(hand){
+    return this.checkForRecurring(hand,3);
 };

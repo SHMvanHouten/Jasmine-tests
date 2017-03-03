@@ -70,8 +70,13 @@ describe("Poker", function(){
     describe("checkForThreeOfAKind",function(){
         it("should determine that it's a three of a kind", function(){
             hand = ["AS","AH","AD","JC","6D"];
-            expect(dealer.checkForThreeOfAKind()).toEqual("A");
+            expect(dealer.checkForThreeOfAKind(hand)).toEqual("A");
         });
+        it("should determine that it's a three of a kind", function(){
+            hand = ["AS","AH","KD","JC","6D"];
+            expect(dealer.checkForThreeOfAKind(hand)).toEqual(0);
+        });
+
     });
 
 

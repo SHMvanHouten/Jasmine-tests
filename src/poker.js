@@ -13,5 +13,6 @@ Dealer.prototype.checkForPair = function(hand){
     return 0;
 };
 Dealer.prototype.getHighestCard = function(hand){
-    return "K"
+    if(hand[0][0] === "Q"){return hand [0][0]}
+    return hand[1][0];
 }

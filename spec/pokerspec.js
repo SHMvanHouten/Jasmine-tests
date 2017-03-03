@@ -61,6 +61,10 @@ describe("Poker", function(){
         hand = ["AS","AH","4D","4C","6D"];
         expect(dealer.checkForTwoPair(hand)).toEqual(["4","A"]);
     });
+    it("should determine that there are no two pairs in the hand", function(){
+        hand = ["AS","AH","AD","AC","6D"];
+        expect(dealer.checkForTwoPair(hand)).toEqual(0);
+    });
 
 
 

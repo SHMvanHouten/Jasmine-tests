@@ -27,7 +27,7 @@ function Dealer(){
 }
 Dealer.prototype.checkForPair = function(hand){
     for(var i = 0; i<hand.length; i++){
-        for(var j = i+1; j<5; j++){
+        for(var j = i+1; j<hand.length; j++){
             if(hand[i][0] === hand[j][0]){return hand[i][0]}
        }
     }

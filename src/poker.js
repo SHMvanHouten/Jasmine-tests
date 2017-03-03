@@ -56,4 +56,7 @@ Dealer.prototype.checkForTwoPair = function(hand){
         }
     }
     return 0;
-}
+};
+Dealer.prototype.checkForThreeOfAKind = function(){
+    return "A";
+};

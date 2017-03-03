@@ -22,13 +22,13 @@ function Dealer(){
             hand[i] = hand[i][0];
         }
         return hand;
-    }
+    };
     this.checkForRecurring = function(hand, recurrenceNeeded){
         for(var i = 0; i<hand.length; i++){
             var amountRecurring = 1;
             for(var j = i+1; j<hand.length; j++){
                 if(hand[i][0] === hand[j][0]){
-                    amountRecurring++
+                    amountRecurring++;
                     if(amountRecurring === recurrenceNeeded){return hand[i][0]}
                 }
             }
@@ -67,4 +67,9 @@ Dealer.prototype.checkForTwoPair = function(hand){
 };
 Dealer.prototype.checkForThreeOfAKind = function(hand){
     return this.checkForRecurring(hand,3);
+};
+Dealer.Prototype.checkForStraight = function(hand){
+    var handWithoutSuits = this.removeSuits(hand);
+    handWithoutSuits = handWithoutSuits.sort();
+
 };

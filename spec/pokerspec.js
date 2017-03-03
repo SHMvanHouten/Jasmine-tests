@@ -72,15 +72,22 @@ describe("Poker", function(){
             hand = ["AS","AH","AD","JC","6D"];
             expect(dealer.checkForThreeOfAKind(hand)).toEqual("A");
         });
-        it("should determine that it's a three of a kind", function(){
+        it("should determine that it's not a three of a kind", function(){
             hand = ["AS","AH","KD","JC","6D"];
             expect(dealer.checkForThreeOfAKind(hand)).toEqual(0);
         });
+        it("should determine that it's a three of a kind", function(){
+            hand = ["KS","KH","AD","AC","AD"];
+            expect(dealer.checkForThreeOfAKind(hand)).toEqual("A");
+        });
+    });
+    describe("checkForStraight", function(){
+        it("should determine that it's a straight and the 6 is high", function(){
+            hand = ["2H","3S","4H","5S","6H"];
+            expect(dealer.checkForStraight(hand)).toEqual("6");
+        });
 
     });
-
-
-
 
 
 });

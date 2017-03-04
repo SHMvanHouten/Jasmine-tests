@@ -86,6 +86,11 @@ describe("Poker", function(){
             hand = ["2H","3S","4H","5S","6H"];
             expect(dealer.checkForStraight(hand)).toEqual("6");
         });
+        it("should determine that it's a straight and the Jack is high", function(){
+            hand = ["7H","8S","9H","TS","JH"];
+            expect(dealer.checkForStraight(hand)).toEqual("J");
+        });
+
 
     });
 

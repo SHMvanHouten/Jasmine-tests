@@ -2,9 +2,10 @@ function HandOfCards (cards){
 
 }
 function Dealer(){
-    var pictureValues = {T: 10, J: 11, Q: 12, K:13,A:14};
 
-    this.determineValue = function(value){
+
+    var determineValue = function(value){
+    var pictureValues = {T: 10, J: 11, Q: 12, K:13, A:14};
         if (isNaN(value)){return pictureValues[value];}
         return value;
     };
@@ -12,8 +13,8 @@ function Dealer(){
     this.getHighestValue = function(hand){
         var highestValue = 0;
         for(var i = 0; i<5; i++){
-            var value = this.determineValue(hand[i][0]);
-            if (value> highestValue){highestValue = value}
+            var value = determineValue(hand[i][0]);
+            if (value > highestValue){highestValue = value}
         }
         return highestValue;
     };
@@ -35,7 +36,34 @@ function Dealer(){
             amountRecurring = 1;
         }
         return 0;
-    }
+    };
+    this.hasConsecutiveValues = function(hand){
+        var consecutive = true;
+        var i = 0;
+        while(i<4){
+            consecutive = (Number(hand[i])+1 == hand[i+1]);
+            i++;
+
+        }
+        return consecutive;
+    };
+    this.changeFacesToValues = function(hand){
+        hand = hand.map(function(x){
+            return determineValue(x);
+        });
+        console.log(hand);
+        return hand;
+    };
+    this.returnValuesToFaces = function(value){
+        var faces = ["T","J","Q","K","A"];
+        if (value<10){return value;}
+        else{
+            for(var j = 0; j<5;j++){
+                if(j+10 === value){return faces[j]}
+            }
+        }
+    };
+
 
 }
 Dealer.prototype.checkForPair = function(hand){
@@ -43,13 +71,14 @@ Dealer.prototype.checkForPair = function(hand){
 };
 Dealer.prototype.getHighestCard = function(hand){
     var highestValue = this.getHighestValue(hand);
-    var faces = ["T","J","Q","K","A"];
-    if (highestValue<10){return highestValue;}
-    else{
-        for(var j = 0; j<5;j++){
-            if(j+10 === highestValue){return faces[j]}
-        }
-    }
+    return this.returnValuesToFaces(highestValue);
+    // var faces = ["T","J","Q","K","A"];
+    // if (highestValue<10){return highestValue;}
+    // else{
+    //     for(var j = 0; j<5;j++){
+    //         if(j+10 === highestValue){return faces[j]}
+    //     }
+    // }
 };
 Dealer.prototype.checkForTwoPair = function(hand){
     var pair = this.checkForPair(hand);
@@ -68,8 +97,16 @@ Dealer.prototype.checkForTwoPair = function(hand){
 Dealer.prototype.checkForThreeOfAKind = function(hand){
     return this.checkForRecurring(hand,3);
 };
-Dealer.Prototype.checkForStraight = function(hand){
+Dealer.prototype.checkForStraight = function(hand){
     var handWithoutSuits = this.removeSuits(hand);
-    handWithoutSuits = handWithoutSuits.sort();
+    handWithoutSuits = this.changeFacesToValues(handWithoutSuits);
+    function compareNumbers(a,b){
+        return Number(a)-Number(b);
+    };
+    handWithoutSuits = handWithoutSuits.sort(compareNumbers);
+    if (this.hasConsecutiveValues(handWithoutSuits)){
 
+        return this.returnValuesToFaces(handWithoutSuits[4]);
+    }
+    return 0;
 };

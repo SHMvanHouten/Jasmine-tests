@@ -91,6 +91,8 @@ Dealer.prototype.checkForThreeOfAKind = function(hand){
 };
 Dealer.prototype.checkForStraight = function(hand){
     var handWithoutSuits = this.removeSuits(hand);
+    var ace = handWithoutSuits.indexOf("A");
+    if(handWithoutSuits.indexOf("2")> -1 && ace>-1){handWithoutSuits[ace] = "1"}
     handWithoutSuits = this.changeFaceToValue(handWithoutSuits);
     function compareNumbers(a,b){
         return Number(a)-Number(b);

@@ -94,10 +94,15 @@ describe("Poker", function(){
             hand = ["6H","8S","9H","TS","JH"];
             expect(dealer.checkForStraight(hand)).toEqual(0);
         });
-
-
-
+        it("should determine that it a straight and the 5 is high", function(){
+            hand = ["AH","2S","3H","4S","5H"];
+            expect(dealer.checkForStraight(hand)).toEqual("5");
+        });
     });
+    describe("checkForFlush",function(){
+        xit("should determine that it's a flush")
+
+    })
 
 
 });

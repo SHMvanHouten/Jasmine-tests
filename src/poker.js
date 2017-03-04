@@ -18,12 +18,20 @@ function Dealer(){
         }
         return highestValue;
     };
-    this.removeSuits = function(hand){
+    this.removeCharacteristic = function(hand, characteristic){
         for(var i = 0; i< 5; i++){
-            hand[i] = hand[i][0];
+            hand[i] = hand[i][characteristic];
         }
         return hand;
     };
+
+    this.removeSuits = function(hand){
+        return this.removeCharacteristic(hand,0);
+    };
+    this.removeValues = function(hand){
+        return this.removeCharacteristic(hand,1);
+    };
+
     this.checkForRecurring = function(hand, recurrenceNeeded){
         for(var i = 0; i<hand.length; i++){
             var amountRecurring = 1;
@@ -103,4 +111,13 @@ Dealer.prototype.checkForStraight = function(hand){
         return this.returnValueToFace(handWithoutSuits[4]);
     }
     return 0;
+};
+Dealer.prototype.checkForFlush = function(hand){
+    var handWithoutValues = this.removeValues(hand);
+    var i = 0;
+    while(i<4){
+        if(handWithoutValues[i] !== handWithoutValues[i + 1]){return false}
+        i++
+    }
+    return true;
 };

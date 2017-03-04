@@ -1,7 +1,7 @@
 describe("Poker", function(){
     beforeEach(function(){
         dealer = new Dealer();
-    })
+    });
     describe("compareHands", function(){
         xit("should say FourOfAKind wins over flush", function(){
             handPlayer1 = new HandOfCards("3S","4S","8S","AS","TS");
@@ -100,7 +100,14 @@ describe("Poker", function(){
         });
     });
     describe("checkForFlush",function(){
-        xit("should determine that it's a flush")
+        it("should determine that it's a flush", function(){
+            hand = ["AH","3H","5H","7H","4H"];
+            expect(dealer.checkForFlush(hand)).toBeTruthy();
+        });
+        it("should determine that it's not a flush", function(){
+            hand = ["6H","8S","9H","TH","JH"];
+            expect(dealer.checkForFlush(hand)).toBeFalsy();
+        });
 
     })
 

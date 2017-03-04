@@ -108,6 +108,20 @@ describe("Poker", function(){
             hand = ["6H","8S","9H","TH","JH"];
             expect(dealer.checkForFlush(hand)).toBeFalsy();
         });
+    });
+    describe("checkForFourOFAKind",function(){
+        it("should determine that it's four of a kind fours",function(){
+            hand = ["4S","2S","4C","4H","4D"];
+            expect(dealer.checkForFourOfAKind(hand)).toEqual("4");
+        });
+        it("should determine that it's not four of a kind",function(){
+            hand = ["4S","2S","4C","4H","3D"];
+            expect(dealer.checkForFourOfAKind(hand)).toEqual(0);
+        });
+        it("should determine that it's four of a kind aces",function(){
+            hand = ["AS","2S","AC","AH","AD"];
+            expect(dealer.checkForFourOfAKind(hand)).toEqual("A");
+        });
 
     })
 

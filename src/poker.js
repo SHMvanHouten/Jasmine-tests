@@ -121,3 +121,6 @@ Dealer.prototype.checkForFlush = function(hand){
     }
     return true;
 };
+Dealer.prototype.checkForFourOfAKind = function(hand){
+    return this.checkForRecurring(hand,4);
+};

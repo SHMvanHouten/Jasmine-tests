@@ -70,26 +70,31 @@ function Dealer(){
             }
         }
     };
+    this.removeCardsFromHand = function(hand, cardToRemove){
+        while (hand.indexOf(cardToRemove) > -1) {
+            hand.splice(hand.indexOf(cardToRemove), 1);
+        }
+        return hand;
+    };
 
 
 }
-Dealer.prototype.checkForPair = function(hand){
-    return this.checkForRecurring(hand,2);
-};
 Dealer.prototype.getHighestCard = function(hand){
     var highestValue = this.getHighestValue(hand);
     return this.returnValueToFace(highestValue);
+};
+Dealer.prototype.checkForPair = function(hand){
+    return this.checkForRecurring(hand,2);
 };
 Dealer.prototype.checkForTwoPair = function(hand){
     var pair = this.checkForPair(hand);
     if (pair !== 0) {
         var handWithoutSuits = this.removeSuits(hand);
-        while (handWithoutSuits.indexOf(pair) > -1) {
-            handWithoutSuits.splice(handWithoutSuits.indexOf(pair), 1);
-        }
-        var secondPair = this.checkForPair(hand);
+        handWithoutSuits = this.removeCardsFromHand(handWithoutSuits, pair);
+        var secondPair = this.checkForPair(handWithoutSuits);
         if (secondPair !== 0) {
             return [pair, secondPair].sort();
+            //todo sort pairs in reverse order of value
         }
     }
     return 0;
@@ -123,4 +128,13 @@ Dealer.prototype.checkForFlush = function(hand){
 };
 Dealer.prototype.checkForFourOfAKind = function(hand){
     return this.checkForRecurring(hand,4);
+};
+Dealer.prototype.checkForFullHouse = function(hand){
+    var threeOfAKind = this.checkForRecurring(hand,3);
+    if(threeOfAKind === 0){return 0;}
+    var handWithoutSuits = this.removeSuits(hand);
+    handWithoutSuits = this.removeCardsFromHand(handWithoutSuits, threeOfAKind);
+    var twoOfAKind = this.checkForRecurring(handWithoutSuits,2);
+    if(twoOfAKind === 0){return 0}
+    return[threeOfAKind,twoOfAKind];
 };

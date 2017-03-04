@@ -122,6 +122,21 @@ describe("Poker", function(){
             hand = ["AS","2S","AC","AH","AD"];
             expect(dealer.checkForFourOfAKind(hand)).toEqual("A");
         });
+    });
+    describe("checkForFullHouse",function(){
+        it("should determine that it's a full house sixes and threes",function(){
+            hand = ["3H","3S","6D","6H","6C"];
+            expect(dealer.checkForFullHouse(hand)).toEqual(["6","3"]);
+        });
+        it("should determine that it's a full house sixes and fours",function(){
+            hand = ["4H","4S","6D","6H","6C"];
+            expect(dealer.checkForFullHouse(hand)).toEqual(["6","4"]);
+        });
+        it("should determine that it's not a full house",function(){
+            hand = ["4H","2S","6D","6H","6C"];
+            expect(dealer.checkForFullHouse(hand)).toEqual(0);
+        });
+
 
     })
 

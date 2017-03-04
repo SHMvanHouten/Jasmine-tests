@@ -90,6 +90,11 @@ describe("Poker", function(){
             hand = ["7H","8S","9H","TS","JH"];
             expect(dealer.checkForStraight(hand)).toEqual("J");
         });
+        it("should determine that it's not a straight", function(){
+            hand = ["6H","8S","9H","TS","JH"];
+            expect(dealer.checkForStraight(hand)).toEqual(0);
+        });
+
 
 
     });

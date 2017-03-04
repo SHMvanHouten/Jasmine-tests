@@ -40,21 +40,20 @@ function Dealer(){
     this.hasConsecutiveValues = function(hand){
         var consecutive = true;
         var i = 0;
-        while(i<4){
+        while(consecutive && i<4){
             consecutive = (Number(hand[i])+1 == hand[i+1]);
             i++;
 
         }
         return consecutive;
     };
-    this.changeFacesToValues = function(hand){
+    this.changeFaceToValue = function(hand){
         hand = hand.map(function(x){
             return determineValue(x);
         });
-        console.log(hand);
         return hand;
     };
-    this.returnValuesToFaces = function(value){
+    this.returnValueToFace = function(value){
         var faces = ["T","J","Q","K","A"];
         if (value<10){return value;}
         else{
@@ -71,14 +70,7 @@ Dealer.prototype.checkForPair = function(hand){
 };
 Dealer.prototype.getHighestCard = function(hand){
     var highestValue = this.getHighestValue(hand);
-    return this.returnValuesToFaces(highestValue);
-    // var faces = ["T","J","Q","K","A"];
-    // if (highestValue<10){return highestValue;}
-    // else{
-    //     for(var j = 0; j<5;j++){
-    //         if(j+10 === highestValue){return faces[j]}
-    //     }
-    // }
+    return this.returnValueToFace(highestValue);
 };
 Dealer.prototype.checkForTwoPair = function(hand){
     var pair = this.checkForPair(hand);
@@ -99,14 +91,14 @@ Dealer.prototype.checkForThreeOfAKind = function(hand){
 };
 Dealer.prototype.checkForStraight = function(hand){
     var handWithoutSuits = this.removeSuits(hand);
-    handWithoutSuits = this.changeFacesToValues(handWithoutSuits);
+    handWithoutSuits = this.changeFaceToValue(handWithoutSuits);
     function compareNumbers(a,b){
         return Number(a)-Number(b);
-    };
+    }
     handWithoutSuits = handWithoutSuits.sort(compareNumbers);
     if (this.hasConsecutiveValues(handWithoutSuits)){
 
-        return this.returnValuesToFaces(handWithoutSuits[4]);
+        return this.returnValueToFace(handWithoutSuits[4]);
     }
     return 0;
 };

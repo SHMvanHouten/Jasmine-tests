@@ -65,10 +65,8 @@ function Dealer(){
     this.returnValueToFace = function(value){
         if (value<10){return value;}
         else{
-            console.log(value);
             for(var face in this.pictureValues){
                 if(this.pictureValues.hasOwnProperty(face) && this.pictureValues[face] === value){
-                    console.log(face);
                     return face;
                 }
             }
@@ -107,8 +105,7 @@ Dealer.prototype.checkForTwoPair = function(hand){
         handWithoutSuits = this.removeCardsFromHand(handWithoutSuits, pair);
         var secondPair = this.checkForPair(handWithoutSuits);
         if (secondPair !== 0) {
-            var result = this.sortArray([pair, secondPair], true);
-            return result;
+             return this.sortArray([pair, secondPair], true);
         }
     }
     return 0;

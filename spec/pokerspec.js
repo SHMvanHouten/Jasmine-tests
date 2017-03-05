@@ -146,6 +146,10 @@ describe("Poker", function(){
             hand = ["2H","3H","4H","5H","7H"];
             expect(dealer.checkForStraightFlush(hand)).toEqual(0)
         });
+        it("should determine it's a royal flush", function(){
+            hand = ["TH","JH","QH","KH","AH"];
+            expect(dealer.checkForStraightFlush(hand)).toEqual("A")
+        });
 
     });
 

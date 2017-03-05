@@ -146,7 +146,8 @@ Dealer.prototype.checkForFullHouse = function(hand){
 };
 Dealer.prototype.checkForStraightFlush = function(hand){
     var straightResult = this.checkForStraight(hand);
-    if(straightResult && this.checkForStraight(hand)>0){
+    if(straightResult && this.checkForStraight(hand)!=0){
         return straightResult;
     }
+    return 0;
 };

@@ -4,8 +4,9 @@ function HandOfCards (cards){
 function Dealer(){
 
 
-    var determineValue = function(value){
     var pictureValues = {T: 10, J: 11, Q: 12, K:13, A:14};
+
+    var determineValue = function(value){
         if (isNaN(value)){return pictureValues[value];}
         return value;
     };
@@ -55,18 +56,19 @@ function Dealer(){
         }
         return consecutive;
     };
-    this.changeFaceToValue = function(hand){
+    this.changeFacesToValues = function(hand){
         hand = hand.map(function(x){
             return determineValue(x);
         });
         return hand;
     };
     this.returnValueToFace = function(value){
-        var faces = ["T","J","Q","K","A"];
         if (value<10){return value;}
         else{
-            for(var j = 0; j<5;j++){
-                if(j+10 === value){return faces[j]}
+            for(var face in pictureValues){
+                if(pictureValues[face] === value){
+                    return face;
+                }
             }
         }
     };
@@ -106,7 +108,7 @@ Dealer.prototype.checkForStraight = function(hand){
     var handWithoutSuits = this.removeSuits(hand);
     var ace = handWithoutSuits.indexOf("A");
     if(handWithoutSuits.indexOf("2")> -1 && ace>-1){handWithoutSuits[ace] = "1"}
-    handWithoutSuits = this.changeFaceToValue(handWithoutSuits);
+    handWithoutSuits = this.changeFacesToValues(handWithoutSuits);
     function compareNumbers(a,b){
         return Number(a)-Number(b);
     }

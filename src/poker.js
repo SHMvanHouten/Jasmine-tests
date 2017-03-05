@@ -4,10 +4,10 @@ function HandOfCards (cards){
 function Dealer(){
 
 
-    var pictureValues = {T: 10, J: 11, Q: 12, K:13, A:14};
+
 
     var determineValue = function(value){
-        if (isNaN(value)){return pictureValues[value];}
+        if (isNaN(value)){return Dealer.prototype.pictureValues[value];}
         return value;
     };
 
@@ -65,8 +65,10 @@ function Dealer(){
     this.returnValueToFace = function(value){
         if (value<10){return value;}
         else{
-            for(var face in pictureValues){
-                if(pictureValues[face] === value){
+            console.log(value);
+            for(var face in this.pictureValues){
+                if(this.pictureValues.hasOwnProperty(face) && this.pictureValues[face] === value){
+                    console.log(face);
                     return face;
                 }
             }
@@ -78,9 +80,19 @@ function Dealer(){
         }
         return hand;
     };
+    this.sortArray = function(array, reverseAndReturn){
+        array = this.changeFacesToValues(array);
+        function compareNumbers(a,b){
+            return Number(a)-Number(b);
+        }
+        array.sort(compareNumbers);
+        if(reverseAndReturn){array = array.map(this.returnValueToFace, this).reverse()}
+        return array;
+    }
 
 
 }
+Dealer.prototype.pictureValues = {T: 10, J: 11, Q: 12, K:13, A:14};
 Dealer.prototype.getHighestCard = function(hand){
     var highestValue = this.getHighestValue(hand);
     return this.returnValueToFace(highestValue);
@@ -95,8 +107,8 @@ Dealer.prototype.checkForTwoPair = function(hand){
         handWithoutSuits = this.removeCardsFromHand(handWithoutSuits, pair);
         var secondPair = this.checkForPair(handWithoutSuits);
         if (secondPair !== 0) {
-            return [pair, secondPair].sort();
-            //todo sort pairs in reverse order of value
+            var result = this.sortArray([pair, secondPair], true);
+            return result;
         }
     }
     return 0;
@@ -106,13 +118,10 @@ Dealer.prototype.checkForThreeOfAKind = function(hand){
 };
 Dealer.prototype.checkForStraight = function(hand){
     var handWithoutSuits = this.removeSuits(hand);
+    //should ace be 1 or 14:
     var ace = handWithoutSuits.indexOf("A");
     if(handWithoutSuits.indexOf("2")> -1 && ace>-1){handWithoutSuits[ace] = "1"}
-    handWithoutSuits = this.changeFacesToValues(handWithoutSuits);
-    function compareNumbers(a,b){
-        return Number(a)-Number(b);
-    }
-    handWithoutSuits = handWithoutSuits.sort(compareNumbers);
+    handWithoutSuits = this.sortArray(handWithoutSuits,false);
     if (this.hasConsecutiveValues(handWithoutSuits)){
 
         return this.returnValueToFace(handWithoutSuits[4]);

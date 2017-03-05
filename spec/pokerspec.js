@@ -56,11 +56,11 @@ describe("Poker", function(){
     describe("checkForTwoPair",function(){
         it("should determine that there are two pairs in the hand", function(){
             hand = ["KS","KH","3D","3C","6D"];
-            expect(dealer.checkForTwoPair(hand)).toEqual(["3","K"]);
+            expect(dealer.checkForTwoPair(hand)).toEqual(["K","3"]);
         });
         it("should determine that there are two pairs 4s and Aces in the hand", function(){
             hand = ["AS","AH","4D","4C","6D"];
-            expect(dealer.checkForTwoPair(hand)).toEqual(["4","A"]);
+            expect(dealer.checkForTwoPair(hand)).toEqual(["A","4"]);
         });
         it("should determine that there are no two pairs in the hand", function(){
             hand = ["AS","AH","AD","AC","6D"];

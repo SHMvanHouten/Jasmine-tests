@@ -89,7 +89,7 @@ function Dealer(){
 
 }
 Dealer.prototype.pictureValues = {T: 10, J: 11, Q: 12, K:13, A:14};
-Dealer.prototype.scores = ["High Card", "Pair", "TwoPair", "ThreeOfAKind", "Straight", "Flush", "FullHouse", "FourOfAKind", "StraightFlush", "RoyalFlush"];
+Dealer.prototype.scores = ["HighCard", "Pair", "TwoPair", "ThreeOfAKind", "Straight", "Flush", "FullHouse", "FourOfAKind", "StraightFlush", "RoyalFlush"];
 Dealer.prototype.checkForHighCard = function(hand){
     var highestValue = this.getHighestValue(hand);
     return this.returnValueToFace(highestValue);
@@ -162,4 +162,15 @@ Dealer.prototype.findScore = function(hand){
         var scoreType = this["checkFor" + scores[i]](hand);
         if ( scoreType !== 0){return [i,scoreType]};
     }
+};
+Dealer.prototype.compareHands = function(hand1, hand2){
+    var result1 = this.findScore(hand1);
+    var result2 = this.findScore(hand2);
+    if(result1[0]> result2[0]){
+        return "player 1 wins with "+this.scores[result1[0]];
+    }
+    if (result2[0]>result1[0]){
+        return "player 2 wins with "+this.scores[result2[0]]
+    }
+
 };

@@ -3,10 +3,10 @@ describe("Poker", function(){
         dealer = new Dealer();
     });
     describe("compareHands", function(){
-        xit("should say FourOfAKind wins over flush", function(){
-            handPlayer1 = new HandOfCards("3S","4S","8S","AS","TS");
-            handPlayer2 = new HandOfCards("QH","QS","QC","QD","4D");
-            expect(dealer.compareHands()).toEqual("player2");
+        it("should say FourOfAKind wins over flush", function(){
+            handPlayer1 = ["3S","4S","8S","AS","TS"];
+            handPlayer2 = ["QH","QS","QC","QD","4D"];
+            expect(dealer.compareHands(handPlayer1,handPlayer2)).toEqual("player 2 wins with FourOfAKind");
         })
     });
     describe("checkForPair",function(){

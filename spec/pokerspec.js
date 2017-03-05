@@ -136,9 +136,18 @@ describe("Poker", function(){
             hand = ["4H","2S","6D","6H","6C"];
             expect(dealer.checkForFullHouse(hand)).toEqual(0);
         });
+    });
+    describe("checkForStraightFlush/checkForRoyalFlush",function(){
+        it("should determine it's a straight flush with 6 high", function(){
+            hand = ["2H","3H","4H","5H","6H"];
+            expect(dealer.checkForStraightFlush(hand)).toEqual("6")
+        });
+        it("should determine it's not a straight flush", function(){
+            hand = ["2H","3H","4H","5H","7H"];
+            expect(dealer.checkForStraightFlush(hand)).toEqual(0)
+        });
 
-
-    })
+    });
 
 
 });

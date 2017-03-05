@@ -57,9 +57,7 @@ function Dealer(){
         return consecutive;
     };
     this.changeFacesToValues = function(hand){
-        hand = hand.map(function(x){
-            return determineValue(x);
-        });
+        hand = hand.map(determineValue);
         return hand;
     };
     this.returnValueToFace = function(value){
@@ -145,4 +143,10 @@ Dealer.prototype.checkForFullHouse = function(hand){
     var twoOfAKind = this.checkForRecurring(handWithoutSuits,2);
     if(twoOfAKind === 0){return 0}
     return[threeOfAKind,twoOfAKind];
+};
+Dealer.prototype.checkForStraightFlush = function(hand){
+    var straightResult = this.checkForStraight(hand);
+    if(straightResult && this.checkForStraight(hand)>0){
+        return straightResult;
+    }
 };

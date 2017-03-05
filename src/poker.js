@@ -89,14 +89,15 @@ function Dealer(){
 
 }
 Dealer.prototype.pictureValues = {T: 10, J: 11, Q: 12, K:13, A:14};
-Dealer.prototype.getHighestCard = function(hand){
+Dealer.prototype.scores = ["High Card", "Pair", "TwoPair", "ThreeOfAKind", "Straight", "Flush", "FullHouse", "FourOfAKind", "StraightFlush", "RoyalFlush"];
+Dealer.prototype.checkForHighCard = function(hand){
     var highestValue = this.getHighestValue(hand);
     return this.returnValueToFace(highestValue);
 };
 Dealer.prototype.checkForPair = function(hand){
     return this.checkForRecurring(hand,2);
 };
-Dealer.prototype.checkForTwoPair = function(hand){
+Dealer.prototype.checkForTwoPairs = function(hand){
     var pair = this.checkForPair(hand);
     if (pair !== 0) {
         var handWithoutSuits = this.removeSuits(hand);
@@ -146,8 +147,19 @@ Dealer.prototype.checkForFullHouse = function(hand){
 };
 Dealer.prototype.checkForStraightFlush = function(hand){
     var straightResult = this.checkForStraight(hand);
-    if(straightResult && this.checkForStraight(hand)!=0){
+    if(straightResult && this.checkForStraight(hand)!==0){
         return straightResult;
     }
     return 0;
+};
+Dealer.prototype.checkForRoyalFlush = function(hand){
+    if (this.checkForStraightFlush(hand) === "A"){return ""}
+    return 0;
+};
+Dealer.prototype.findScore = function(hand){
+    var scores = this.scores;
+    for(var i = scores.length - 1; i >= 0; i--){
+        var scoreType = this["checkFor" + scores[i]](hand);
+        if ( scoreType !== 0){return [i,scoreType]};
+    }
 };

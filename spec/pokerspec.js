@@ -27,44 +27,44 @@ describe("Poker", function(){
             expect(dealer.checkForPair(hand)).toEqual("K");
         });
     });
-    describe("getHighestCard", function(){
+    describe("checkForHighCard", function(){
         it("should determine the King is the highest card in the hand", function(){
             hand = ["3S","KH","3H","7H","6D"];
-            expect(dealer.getHighestCard(hand)).toEqual("K");
+            expect(dealer.checkForHighCard(hand)).toEqual("K");
         });
         it("should determine the Queen is the highest card in the hand", function(){
             hand = ["3S","QH","3H","7H","6D"];
-            expect(dealer.getHighestCard(hand)).toEqual("Q");
+            expect(dealer.checkForHighCard(hand)).toEqual("Q");
         });
         it("should determine the Queen is the highest card in the hand", function(){
             hand = ["QS","3H","3H","7H","6D"];
-            expect(dealer.getHighestCard(hand)).toEqual("Q");
+            expect(dealer.checkForHighCard(hand)).toEqual("Q");
         });
         it("should determine the King is the highest card in the hand", function(){
             hand = ["KS","3H","3H","7H","6D"];
-            expect(dealer.getHighestCard(hand)).toEqual("K");
+            expect(dealer.checkForHighCard(hand)).toEqual("K");
         });
         it("should determine the Ace is the highest card in the hand", function(){
             hand = ["KS","AH","3H","7H","6D"];
-            expect(dealer.getHighestCard(hand)).toEqual("A");
+            expect(dealer.checkForHighCard(hand)).toEqual("A");
         });
         it("should determine the 7 is the highest card in the hand", function(){
             hand = ["3S","5H","3H","7H","6D"];
-            expect(dealer.getHighestCard(hand)).toEqual("7");
+            expect(dealer.checkForHighCard(hand)).toEqual("7");
         });
     });
     describe("checkForTwoPair",function(){
         it("should determine that there are two pairs in the hand", function(){
             hand = ["KS","KH","3D","3C","6D"];
-            expect(dealer.checkForTwoPair(hand)).toEqual(["K","3"]);
+            expect(dealer.checkForTwoPairs(hand)).toEqual(["K","3"]);
         });
         it("should determine that there are two pairs 4s and Aces in the hand", function(){
             hand = ["AS","AH","4D","4C","6D"];
-            expect(dealer.checkForTwoPair(hand)).toEqual(["A","4"]);
+            expect(dealer.checkForTwoPairs(hand)).toEqual(["A","4"]);
         });
         it("should determine that there are no two pairs in the hand", function(){
             hand = ["AS","AH","AD","AC","6D"];
-            expect(dealer.checkForTwoPair(hand)).toEqual(0);
+            expect(dealer.checkForTwoPairs(hand)).toEqual(0);
         });
     });
     describe("checkForThreeOfAKind",function(){
@@ -150,7 +150,12 @@ describe("Poker", function(){
             hand = ["TH","JH","QH","KH","AH"];
             expect(dealer.checkForStraightFlush(hand)).toEqual("A")
         });
-
+    });
+    describe("findScore",function(){
+        it("should determine the hand is a straight flush with a 7 high",function(){
+            hand = ["2H","3H","4H","5H","6H"];
+            expect(dealer.findScore(hand)).toEqual([8,"6"]);
+        });
     });
 
 

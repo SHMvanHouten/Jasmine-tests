@@ -3,10 +3,11 @@ function VigenèreCipher(abc, key){
         strArray = str.split("");
         var outPutString = ""
         keyIndex = abc.indexOf(key);
-        console.log(keyIndex);
         for (var i = 0; i<str.length; i++){
             charIndex = abc.indexOf(strArray[i]);
-            outPutString += abc[charIndex + keyIndex];
+            indexForCipheredChar = charIndex + keyIndex;
+            if(indexForCipheredChar >= abc.length){indexForCipheredChar -= abc.length;}
+            outPutString += abc[indexForCipheredChar];
         }
         return outPutString;
     };

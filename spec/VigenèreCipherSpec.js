@@ -17,6 +17,12 @@ describe("VigenèreCipher", function(){
             cipher = new VigenèreCipher(abc, key);
             expect(cipher.getEncodedString("testing")).toEqual("vguvkpi");
         });
+        it("should return a string up one index point for the password c, from 'zark' to 'bctm'", function(){
+            var key = "c";
+            var abc = "abcdefghijklmnopqrstuvwxyz";
+            cipher = new VigenèreCipher(abc, key);
+            expect(cipher.getEncodedString('zark')).toEqual('bctm');
+        });
 
     });
 

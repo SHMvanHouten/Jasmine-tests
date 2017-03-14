@@ -33,7 +33,7 @@ describe("VigenèreCipher", function(){
             var key = "ca";
             var abc = "abcdefghijklmnopqrstuvwxyz";
             cipher = new VigenèreCipher(abc, key);
-            expect(cipher.getEncodedString('za/rk')).toEqual('ba/tk');
+            expect(cipher.getEncodedString('za/rk')).toEqual('ba/rm');
         });
 
 

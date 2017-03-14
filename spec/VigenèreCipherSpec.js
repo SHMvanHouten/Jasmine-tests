@@ -31,5 +31,14 @@ describe("VigenèreCipher", function(){
         });
 
     });
+    describe("decode", function(){
+        it("should return a string down one index point for the password b, from 'uftujoh' to 'testing'", function(){
+            var key = "b";
+            var abc = "abcdefghijklmnopqrstuvwxyz";
+            cipher = new VigenèreCipher(abc, key);
+            expect(cipher.getDecodedString("uftujoh")).toEqual("testing");
+        })
+
+    })
 
 });

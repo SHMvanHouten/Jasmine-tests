@@ -4,12 +4,17 @@ function VigenèreCipher(abc, key){
         var outPutString = ""
         var j = 0;
         for (var i = 0; i<str.length; i++){
-            keyIndex = abc.indexOf(key[j]);
             charIndex = abc.indexOf(strArray[i]);
-            indexForCipheredChar = charIndex + keyIndex;
-            if(indexForCipheredChar >= abc.length){indexForCipheredChar -= abc.length;}
-            outPutString += abc[indexForCipheredChar];
-            j<key.length - 1 ? j++: j=0;
+            if(charIndex === -1){
+                outPutString += strArray[i]
+            } else{
+                keyIndex = abc.indexOf(key[j]);
+
+                indexForCipheredChar = charIndex + keyIndex;
+                if(indexForCipheredChar >= abc.length){indexForCipheredChar -= abc.length;}
+                outPutString += abc[indexForCipheredChar];
+                j<key.length - 1 ? j++: j=0;
+            }
         }
         return outPutString;
     };

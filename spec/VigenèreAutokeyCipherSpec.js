@@ -12,4 +12,10 @@ describe("VigenèreAutokeyCipher", function(){
         cipher = new VigenèreCipher(abc, key);
         expect(cipher.getEncodedString('amazingly few discotheques provide jukeboxes')).toEqual('pmsrebxoy rev lvynmylatcwu dkvzyxi bjbswwaib');
     });
+    it("should not use any non abc chars as a password", function(){
+        var key = "password";
+        var abc = "abcdefghijklmnopqrstuvwxyz";
+        cipher = new VigenèreCipher(abc, key);
+        expect(cipher.getEncodedString('/amazingly few discotheques provide jukeboxes')).toEqual('/pmsrebxoy rev lvynmylatcwu dkvzyxi bjbswwaib');
+    })
 });

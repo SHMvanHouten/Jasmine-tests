@@ -18,8 +18,6 @@ function VigenèreCipher(abc, key){
         var outPutString = ""
         var j = 0;
         var k = 0;
-        var strWithoutSpaces = str.split(" ").join("");
-        console.log(strWithoutSpaces);
         for (var i = 0; i<str.length; i++){
             charIndex = abc.indexOf(strArray[i]);
             if(charIndex === -1){
@@ -32,8 +30,14 @@ function VigenèreCipher(abc, key){
                 j++;
             }
             else{
-                var keyIndex = abc.indexOf(strWithoutSpaces[k]);
-                while(keyIndex < 0){k++; keyIndex = abc.indexOf(strWithoutSpaces[k])}
+                var keyIndex;
+                if(encodeOrDecode){
+                    keyIndex = abc.indexOf(outPutString[k]);
+                    while(keyIndex<0){k++; keyIndex = abc.indexOf(outPutString[k]);}
+                }else{
+                    keyIndex = abc.indexOf(str[k]);
+                    while(keyIndex < 0){k++; keyIndex = abc.indexOf(str[k])}
+                }
                 indexForCipheredChar = getIndexForCipheredChar(charIndex, keyIndex, encodeOrDecode);
                 indexForCipheredChar = correctInvalidIndexForCipheredChar(indexForCipheredChar, encodeOrDecode);
                 outPutString += abc[indexForCipheredChar];

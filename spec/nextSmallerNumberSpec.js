@@ -44,11 +44,17 @@ describe("NextSmallerNumberFinder", function(){
         var number = 1111111111131;
         expect(finder.getNextSmallerNumber(number)).toEqual(1111111111113);
     });
-    it("should return the number 143 for the input of 341 being the next smallest number with the same digits", function(){
+    it("should return the number 314 for the input of 341 being the next smallest number with the same digits", function(){
         finder = new NextSmallerNumberFinder();
         var number = 341;
-        expect(finder.getNextSmallerNumber(number)).toEqual(143);
+        expect(finder.getNextSmallerNumber(number)).toEqual(314);
     });
+    it("should return the number 513 for the input of 531 being the next smallest number with the same digits", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 513;
+        expect(finder.getNextSmallerNumber(number)).toEqual(531);
+    });
+
 
 
 

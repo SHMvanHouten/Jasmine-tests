@@ -160,7 +160,7 @@ Dealer.prototype.findScore = function(hand){
     var scores = this.scores;
     for(var i = scores.length - 1; i >= 0; i--){
         var scoreType = this["checkFor" + scores[i]](hand);
-        if ( scoreType !== 0){return [i,scoreType]};
+        if ( scoreType !== 0){return [i,scoreType]}
     }
 };
 Dealer.prototype.compareHands = function(hand1, hand2){

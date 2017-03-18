@@ -1,13 +1,19 @@
 function NextSmallerNumberFinder(){
-    this.turnTheNumberAround = function(number){
-        var turnedAroundNumberArray = number.toString().split("").reverse();
-        var turnedAroundNumber = "";
-        for (var i = 0; i<turnedAroundNumberArray.length ; i += 1){
-            turnedAroundNumber += turnedAroundNumberArray[i];
+    this.ascertainHowTheNumbersShouldBeOrdered = function(number){
+        var numberArray = number.toString().split("");
+        var sortedNumberArray = number.toString().split("").sort();
+        // if numberArray is already the smallest number, return -1;
+        if (numberArray === sortedNumberArray){return -1}
+        var outputNumberString = "";
+        while (numberArray[0]===sortedNumberArray[0]){
+            outputNumberString += numberArray.splice(0,1);
+            sortedNumberArray.splice(0,1)
         }
-        return Number(turnedAroundNumber);
-    }
+        outputNumberString += sortedNumberArray.join("");
+        return Number(outputNumberString);
+    };
+
 }
 NextSmallerNumberFinder.prototype.getNextSmallerNumber = function(inputNumber){
-    return this.turnTheNumberAround(inputNumber);
+    return this.ascertainHowTheNumbersShouldBeOrdered(inputNumber);
 };

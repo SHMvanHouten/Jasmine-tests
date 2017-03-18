@@ -9,7 +9,9 @@ function NextSmallerNumberFinder(){
             outputNumberString += numberArray.splice(0,1);
             sortedNumberArray.splice(0,1)
         }
-        outputNumberString += sortedNumberArray.join("");
+        var indexOfSecondHighestDigitLeft = sortedNumberArray.indexOf(numberArray[0]) - 1;
+        outputNumberString += sortedNumberArray.splice(indexOfSecondHighestDigitLeft,1);
+        outputNumberString += sortedNumberArray.reverse().join("");
         return Number(outputNumberString);
     };
 

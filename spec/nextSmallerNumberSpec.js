@@ -18,7 +18,7 @@
 //     test data only employs positive integers.
 
 
-describe("NextSmallerNumberFinder", function(){
+xdescribe("NextSmallerNumberFinder", function(){
     it("should return the number 12 for the input of 21 being the next smallest number with the same digits", function(){
         finder = new NextSmallerNumberFinder();
         var number = 21;
@@ -80,10 +80,35 @@ describe("NextSmallerNumberFinder", function(){
         var number = 135;
         expect(finder.getNextSmallerNumber(number)).toEqual(-1);
     });
-
-
-
-
-
+});
+describe("NextBiggerNumberFinder", function(){
+    it("should return the number that is the one higher that the next one",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(412)).toEqual(421);
+    });
+    it("should return the number that is the one higher that the next one",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(1200093)).toEqual(1200309);
+    });
+    it("should return the number that is the one higher that the next one",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(2017)).toEqual(2071);
+    });
+    it("should return the number that is the one higher that the next one",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(414)).toEqual(441);
+    });
+    it("should return the number that is the one higher that the next one",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(144)).toEqual(414);
+    });
+    it("should return -1 if the number is the highest possible with the given digits",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(9)).toEqual(-1);
+    });
+    it("should return -1 if the number is the highest possible with the given digits",function(){
+        finder2 = new NextBiggerNumberFinder();
+        expect(finder2.getNextBiggerNumber(531)).toEqual(-1);
+    });
 
 });

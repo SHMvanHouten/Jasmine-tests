@@ -51,9 +51,30 @@ describe("NextSmallerNumberFinder", function(){
     });
     it("should return the number 513 for the input of 531 being the next smallest number with the same digits", function(){
         finder = new NextSmallerNumberFinder();
-        var number = 513;
-        expect(finder.getNextSmallerNumber(number)).toEqual(531);
+        var number = 531;
+        expect(finder.getNextSmallerNumber(number)).toEqual(513);
     });
+    it("should return the number 341 for the input of 413 being the next smallest number with the same digits", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 413;
+        expect(finder.getNextSmallerNumber(number)).toEqual(341);
+    });
+    it("should return the number 790 for the input of 907 being the next smallest number with the same digits", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 907;
+        expect(finder.getNextSmallerNumber(number)).toEqual(790);
+    });
+    it("should return the number -1 for the input of 709 because 097 is not a valid outcome", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 709;
+        expect(finder.getNextSmallerNumber(number)).toEqual(-1);
+    });
+    it("should return the number 143 for the input of 314 being the next smallest number with the same digits", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 314;
+        expect(finder.getNextSmallerNumber(number)).toEqual(143);
+    });
+
 
 
 

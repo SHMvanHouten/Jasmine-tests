@@ -20,6 +20,6 @@ NextSmallerNumberFinder.prototype.getNextSmallerNumber = function(number){
     var numberArray = number.toString().split("");
     if (numberArray === sortedNumberArray){return -1}
     this.getNextSmallestNumber(numberArray);
-    console.log(this.outputString);
+    if(this.outputString[0] === "0"){return -1}
     return Number(this.outputString);
 };

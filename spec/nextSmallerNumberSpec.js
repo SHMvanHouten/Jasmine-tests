@@ -64,17 +64,17 @@ describe("NextSmallerNumberFinder", function(){
         var number = 907;
         expect(finder.getNextSmallerNumber(number)).toEqual(790);
     });
-    it("should return the number -1 for the input of 709 because 097 is not a valid outcome", function(){
-        finder = new NextSmallerNumberFinder();
-        var number = 709;
-        expect(finder.getNextSmallerNumber(number)).toEqual(-1);
-    });
+
     it("should return the number 143 for the input of 314 being the next smallest number with the same digits", function(){
         finder = new NextSmallerNumberFinder();
         var number = 314;
         expect(finder.getNextSmallerNumber(number)).toEqual(143);
     });
-
+    it("should return the number -1 for the input of 709 because 097 is not a valid outcome", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 709;
+        expect(finder.getNextSmallerNumber(number)).toEqual(-1);
+    });
 
 
 

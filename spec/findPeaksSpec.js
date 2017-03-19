@@ -44,10 +44,15 @@ describe("PeakFinder",function(){
         var landScape = [1,2,3,1,1,1];
         expect(finder.getAllPeakLocationsAndHeights(landScape)).toEqual({pos:[2],peaks:[3]});
     });
-    xit("should return an object defining the peak to be at index 2 and for it to be 3 high ",function(){
+    it("should return an object defining the peak to be at index 2 and for it to be 3 high ",function(){
+        finder = new PeakFinder();
+        var landScape = [1,2,3,3,3,1];
+        expect(finder.getAllPeakLocationsAndHeights(landScape)).toEqual({pos:[2],peaks:[3]});
+    });
+    it("should return an object defining the peak to be at index 2 and for it to be 3 high ",function(){
         finder = new PeakFinder();
         var landScape = [1,2,3,3,3,4,1];
-        expect(finder.getAllPeakLocationsAndHeights(landScape)).toEqual({pos:[2],peaks:[3]});
+        expect(finder.getAllPeakLocationsAndHeights(landScape)).toEqual({pos:[5],peaks:[4]});
     });
 
 

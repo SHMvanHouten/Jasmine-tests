@@ -75,6 +75,12 @@ describe("NextSmallerNumberFinder", function(){
         var number = 709;
         expect(finder.getNextSmallerNumber(number)).toEqual(-1);
     });
+    it("should return the number -1 for the input of 135 because 135 is the smallest possible number with the given digits", function(){
+        finder = new NextSmallerNumberFinder();
+        var number = 135;
+        expect(finder.getNextSmallerNumber(number)).toEqual(-1);
+    });
+
 
 
 

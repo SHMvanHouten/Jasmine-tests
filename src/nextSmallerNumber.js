@@ -16,10 +16,8 @@ function NextSmallerNumberFinder(){
     };
 }
 NextSmallerNumberFinder.prototype.getNextSmallerNumber = function(number){
-    var sortedNumberArray = number.toString().split("").sort();
     var numberArray = number.toString().split("");
-    if (numberArray === sortedNumberArray){return -1}
     this.getNextSmallestNumber(numberArray);
-    if(this.outputString[0] === "0"){return -1}
+    if(this.outputString[0] === "0" || !this.outputString){return -1}
     return Number(this.outputString);
 };

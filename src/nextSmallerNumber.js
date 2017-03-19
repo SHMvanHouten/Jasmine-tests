@@ -1,7 +1,6 @@
-
 function NextSmallerNumberFinder(){
     this.outputString = "";
-    this.getNextSmallestNumber = function(arr){
+    this.ascertainNextSmallerNumber = function(arr){
         arr.reverse();
         for (var i = 0; i<arr.length; i++){
             for (var j = 0; j<i; j++){
@@ -17,7 +16,7 @@ function NextSmallerNumberFinder(){
 }
 NextSmallerNumberFinder.prototype.getNextSmallerNumber = function(number){
     var numberArray = number.toString().split("");
-    this.getNextSmallestNumber(numberArray);
+    this.ascertainNextSmallerNumber(numberArray);
     if(this.outputString[0] === "0" || !this.outputString){return -1}
     return Number(this.outputString);
 };

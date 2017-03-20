@@ -2,19 +2,6 @@ function Justify(){
     this.addSpace = function(inputString) {
         return inputString.replace(/\s/,"  ");
     };
-    this.getTheAmountOfWordsThatFit = function(text, length){
-        var array = text.split(" ");
-        var firstLine = array[0];
-        var i = 1;
-        while (i<array.length){
-            if(firstLine.length + array[i].length >length){
-                firstLine += "\n" + array[i];
-                length += length;
-            }else{firstLine += " " + array[i]}
-            i++;
-        }
-        return firstLine;
-    };
     this.divideTheTextUpIntoFittingSentencesArray = function(text, length){
         var wordsArray = text.split(" ");
         var fittingSentencesArray = [wordsArray[0]];

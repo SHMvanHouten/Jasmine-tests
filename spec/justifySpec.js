@@ -52,12 +52,6 @@ describe("Justify", function(){
             var editor = new Justify();
             var length = 25;
             var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
-            expect(editor.getTheAmountOfWordsThatFit(text, length)).toEqual("consectetur adipiscing\nelit. Vestibulum sagittis\ndolor");
-        });
-        it("should calculate how many words can fit within a margin",function(){
-            var editor = new Justify();
-            var length = 25;
-            var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
             expect(editor.divideTheTextUpIntoFittingSentencesArray(text, length)).toEqual(["consectetur adipiscing\n","elit. Vestibulum sagittis\n","dolor"]);
         });
 

@@ -36,7 +36,8 @@ describe("Justify", function(){
     xdescribe("getJustifiedText",function(){
         it("should justify the input text to fit in the given margins",function(){
             var editor = new Justify();
-            expect(editor.getJustifiedText()).toEqual("consectetur  adipiscing  elit.\nVestibulum    sagittis   dolor\n")
+            var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
+            expect(editor.getJustifiedText(text)).toEqual("consectetur  adipiscing  elit.\nVestibulum    sagittis   dolor\n")
         });
     });
     describe("spaceAdder",function(){
@@ -45,6 +46,20 @@ describe("Justify", function(){
             var inputString = "hello world!";
             expect(editor.addSpace(inputString)).toEqual("hello  world!");
         });
+    });
+    describe('wordCalculator',function(){
+        it("should calculate how many words can fit within a margin",function(){
+            var editor = new Justify();
+            var length = 25;
+            var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
+            expect(editor.getTheAmountOfWordsThatFit(text, length)).toEqual("consectetur adipiscing\nelit. Vestibulum sagittis\ndolor");
+        });
+        it("should calculate how many words can fit within a margin",function(){
+            var editor = new Justify();
+            var length = 25;
+            var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
+            expect(editor.divideTheTextUpIntoFittingSentencesArray(text, length)).toEqual(["consectetur adipiscing\n","elit. Vestibulum sagittis\n","dolor"]);
+        });
 
-    })
+    });
 });

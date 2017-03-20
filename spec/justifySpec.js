@@ -54,6 +54,13 @@ describe("Justify", function(){
             var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
             expect(editor.divideTheTextUpIntoFittingSentencesArray(text, length)).toEqual(["consectetur adipiscing\n","elit. Vestibulum sagittis\n","dolor"]);
         });
-
     });
+    describe("lengthComparer",function(){
+        it("should return the difference in length between the each inputstring and the length parameter",function(){
+            var editor = new Justify();
+            var length = 25;
+            var fittingSentencesArray = ["consectetur adipiscing\n","elit. Vestibulum sagittis\n","dolor"];
+            expect(editor.getLengthDifference(fittingSentencesArray,length)).toEqual([3,0])
+        })
+    })
 });

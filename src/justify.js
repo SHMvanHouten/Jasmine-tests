@@ -17,5 +17,12 @@ function Justify(){
             }
         }
         return fittingSentencesArray;
+    };
+    this.getLengthDifference = function(fittingSentencesArray, length){
+        var lengthDifferenceArray = [];
+        for(var i = 0; i<fittingSentencesArray.length -1; i +=1){
+            lengthDifferenceArray.push((length + 1) - fittingSentencesArray[i].length);
+        }
+        return lengthDifferenceArray;
     }
 }

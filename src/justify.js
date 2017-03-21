@@ -7,10 +7,6 @@ function Justify(){
         return string;
     };
 
-    //obsolete
-    this.addSpace = function(inputString) {
-        return inputString.replace(/\s/,"  ");
-    };
 
     this.addSpaces = function(lineArray,lineLengthDifference) {
         var numberOfWordsInArray = lineArray.length;
@@ -58,3 +54,7 @@ function Justify(){
         return lengthDifferenceArray;
     }
 }
+// Justify.prototype.getJustifiedText = function(text, length){
+//     var fittingSentencesArray = this.divideTheTextUpIntoFittingSentencesArray(text.length);
+//
+// };

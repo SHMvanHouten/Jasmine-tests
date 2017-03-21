@@ -37,16 +37,11 @@ describe("Justify", function(){
         it("should justify the input text to fit in the given margins", function(){
             var editor = new Justify();
             var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
-            expect(editor.getJustifiedText(text)).toEqual("consectetur  adipiscing  elit.\nVestibulum    sagittis   dolor\n")
+            var length = 40;
+            expect(editor.getJustifiedText(text, length)).toEqual("consectetur  adipiscing  elit.\nVestibulum    sagittis   dolor\n")
         });
     });
-    describe("spaceAdder", function(){
-        it("should add a space between the two words", function(){
-            var editor = new Justify();
-            var inputString = "hello world!";
-            expect(editor.addSpace(inputString)).toEqual("hello  world!");
-        });
-    });
+
     describe('wordCalculator', function(){
         it("should calculate how many words can fit within a margin", function(){
             var editor = new Justify();

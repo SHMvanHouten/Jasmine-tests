@@ -33,12 +33,12 @@
 // Have fun :)
 
 describe("Justify", function(){
-    xdescribe("getJustifiedText", function(){
+    describe("getJustifiedText", function(){
         it("should justify the input text to fit in the given margins", function(){
             var editor = new Justify();
             var text = "consectetur adipiscing elit. Vestibulum sagittis dolor";
-            var length = 40;
-            expect(editor.getJustifiedText(text, length)).toEqual("consectetur  adipiscing  elit.\nVestibulum    sagittis   dolor\n")
+            var length = 30;
+            expect(editor.getJustifiedText(text, length)).toEqual("consectetur  adipiscing  elit.\nVestibulum sagittis dolor")
         });
     });
 
@@ -50,7 +50,7 @@ describe("Justify", function(){
             expect(editor.divideTheTextUpIntoFittingSentencesArray(text, length)).toEqual([ [ 'consectetur', ' adipiscing' ], [ 'elit.', ' Vestibulum', ' sagittis' ], [ 'dolor' ] ]);
         });
     });
-    describe("lengthComparer", function(){
+    xdescribe("lengthComparer", function(){
         it("should return the difference in length between the each inputstring and the length parameter", function(){
             var editor = new Justify();
             var length = 25;

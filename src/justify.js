@@ -45,16 +45,22 @@ function Justify(){
         }
         return fittingSentencesArray;
     };
-    this.getLengthDifference = function(fittingSentencesArray, length){
-        var lengthDifferenceArray = [];
-        for(var i = 0; i<fittingSentencesArray.length -1; i +=1){
-            var lineLength = fittingSentencesArray[i].join("").length;
-            lengthDifferenceArray.push((length) - lineLength);
-        }
-        return lengthDifferenceArray;
+    this.getLengthDifference = function(fittingSentence, length){
+        var lineLength = fittingSentence.join("").length;
+        return length - lineLength;
     }
 }
-// Justify.prototype.getJustifiedText = function(text, length){
-//     var fittingSentencesArray = this.divideTheTextUpIntoFittingSentencesArray(text.length);
-//
-// };
+Justify.prototype.getJustifiedText = function(text, length){
+    var fittingSentencesArray = this.divideTheTextUpIntoFittingSentencesArray(text, length);
+    var fittingSentencesArrayLength = fittingSentencesArray.length;
+    var justifiedText = "";
+    var lengthDifference;
+    for(var i = 0; i< fittingSentencesArrayLength-1; i += 1){
+        lengthDifference = this.getLengthDifference(fittingSentencesArray[i], length);
+        if (lengthDifference === 0){justifiedText += fittingSentence.join("")}
+        else{justifiedText += this.addSpaces(fittingSentencesArray[i], lengthDifference)}
+        justifiedText += "\n";
+    };
+    justifiedText += fittingSentencesArray[fittingSentencesArrayLength-1].join("");
+    return justifiedText;
+};

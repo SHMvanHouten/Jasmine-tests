@@ -76,6 +76,12 @@ describe("Justify", function(){
             var lineArray = [ 'conset', ' adipiscing', ' fiets' ];
             expect(editor.addSpaces(lineArray,lineLengthDifference)).toEqual([ 'conset  adipiscing  fiets' ])
         });
+        it("should add the amount of spaces necessary between each word", function(){
+            var editor = new Justify();
+            var lineLengthDifference = 3;
+            var lineArray = [ 'conse', ' adipiscing', ' fiets' ];
+            expect(editor.addSpaces(lineArray,lineLengthDifference)).toEqual([ 'conse   adipiscing  fiets' ])
+        });
 
 
     });

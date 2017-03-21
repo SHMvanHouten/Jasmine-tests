@@ -25,7 +25,7 @@ function Justify(){
         for(var i=1; i<numberOfWordsInArray; i += 1){
             if(extraSpacesAtBeginningOfLine > 0){
                 line += " ";
-                extraSpacesAtBeginningOfLine = 1;
+                extraSpacesAtBeginningOfLine -= 1;
             }
             line += stringOfSpacesToInsert + lineArray[i];
         }

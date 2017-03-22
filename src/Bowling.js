@@ -1,13 +1,15 @@
 function BowlingGame(){
-    this.scoreFrame = function(frame){
+    this.getScoreForFrame = function(frame){
         if(frame[1] === "/"){return 10}
         return Number(frame[0])+Number(frame[1]);
     };
 
 }
 BowlingGame.prototype.getTotalScore = function(scoreSheet){
-    totalScore;
-    for(var i = scoreSheet.length - 1; i>= 0; i -= 1){
-
+    var totalScore = 0;
+    var scoreSheet = scoreSheet.split(" ");
+    for(var i = 0; i< scoreSheet.length; i += 1){
+        totalScore += this.getScoreForFrame(scoreSheet[i]);
     }
+    return totalScore;
 };

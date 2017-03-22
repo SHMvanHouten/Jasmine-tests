@@ -6,21 +6,21 @@ describe("bowlingGame", function(){
             expect(game.getTotalScore(scoreSheet)).toEqual(169);
         });
     });
-    describe("scoreFrame", function() {
+    xdescribe("getScoreForFrame", function() {
         it("should give a score of 8 for the input of '71'", function() {
             var game = new BowlingGame();
             var frame = "71";
-            expect(game.scoreFrame(frame)).toEqual(8);
+            expect(game.getScoreForFrame(frame)).toEqual(8);
         });
         it("should give a score of 9 for the input of '90'", function() {
             var game = new BowlingGame();
             var frame = "90";
-            expect(game.scoreFrame(frame)).toEqual(9);
+            expect(game.getScoreForFrame(frame)).toEqual(9);
         });
         it("should give a score of 10 for the input of '9/'", function() {
             var game = new BowlingGame();
             var frame = "9/";
-            expect(game.scoreFrame(frame)).toEqual(10);
+            expect(game.getScoreForFrame(frame)).toEqual(10);
         });
     });
     describe("getTotalScore", function() {
@@ -29,5 +29,11 @@ describe("bowlingGame", function(){
             var scoreSheet = '90 90 90 90 9/ 90 90 90 90 90';
             expect(game.getTotalScore(scoreSheet)).toEqual(91);
         });
+        it("should return a total score of 91 for the input'90 90 90 90 9/ 90 90 90 90 90'  ", function() {
+            var game = new BowlingGame();
+            var scoreSheet = '90 90 90 90 9/ 90 90 90 90 90';
+            expect(game.getTotalScore(scoreSheet)).toEqual(91);
+        });
+        
     });
 });
